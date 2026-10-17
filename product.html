@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product | PCBuilders</title>
+  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="ui.css"><link rel="stylesheet" href="storefront.css">
+</head>
+<body class="store-page">
+  <canvas class="smoke_background" aria-hidden="true"></canvas>
+  <header class="store-header">
+    <a class="store-logo" href="index.html" aria-label="PCBuilders home"><img src="logo/PCBuilder_logo_square.svg" alt="PCBuilders logo"></a>
+    <nav class="store-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="discover.html">Discover</a><a href="index.html#pcbuilder">PC Builder</a></nav>
+    <a class="store-cart-link" href="cart.html">Cart <span id="cartCount">0</span></a>
+  </header>
+    <a class="back-link" href="discover.html">← Back to Discover</a>
+    <p class="store-message" id="productStatus" role="status">Loading product details...</p>
+    <section class="product-detail" id="productContent" hidden>
+      <div class="product-detail-image-wrap"><img id="productImage" class="product-detail-image" alt=""></div>
+      <div class="product-detail-info">
+        <p class="product-category" id="productCategory"></p><h1 id="productName"></h1>
+        <p class="product-detail-price" id="productPrice"></p><p class="product-stock" id="productStock"></p>
+        <p class="product-detail-description" id="productDescription"></p>
+        <div class="quantity-row"><label for="productQuantity">Quantity</label><input id="productQuantity" type="number" min="1" value="1" inputmode="numeric"></div>
+        <div class="product-actions"><button class="store-button store-button-secondary" id="addToCartButton" type="button">Add to Cart</button><button class="store-button store-button-primary" id="buyNowButton" type="button">Buy Now</button></div>
+        <p class="store-message action-message" id="productActionStatus" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+    <section class="specifications-section" id="specificationsSection" hidden><h2>Specifications</h2><dl id="productSpecifications" class="specifications-list"></dl></section>
+  <script type="module" src="product.js"></script><script type="module" src="cart-count.js"></script>
+</body>
+</html>

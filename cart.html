@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart | PCBuilders</title>
+  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="ui.css"><link rel="stylesheet" href="storefront.css">
+</head>
+<body class="store-page">
+  <canvas class="smoke_background" aria-hidden="true"></canvas>
+  <header class="store-header">
+    <a class="store-logo" href="index.html" aria-label="PCBuilders home"><img src="logo/PCBuilder_logo_square.svg" alt="PCBuilders logo"></a>
+    <nav class="store-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="discover.html">Discover</a></nav>
+    <a class="store-cart-link active" href="cart.html">Cart <span id="cartCount">0</span></a>
+  </header>
+  <main class="store-main cart-main">
+    <h1 class="page-title">YOUR CART</h1><p class="store-message" id="cartStatus" role="status"></p>
+    <div class="cart-layout"><section id="cartItems" class="cart-items" aria-label="Cart items"></section>
+      <aside class="cart-summary"><h2>Order Summary</h2>
+        <div class="cart-summary-line"><span>Items</span><strong id="cartItemCount">0</strong></div>
+        <div class="cart-summary-line cart-total"><span>Subtotal</span><strong id="cartSubtotal">PHP0</strong></div>
+        <p class="cart-note">Checkout, payment, order creation and final stock checks are not implemented in this prototype.</p>
+        <button class="store-button store-button-primary store-button-full" id="checkoutButton" type="button">Proceed to Checkout</button>
+        <button class="store-button store-button-secondary store-button-full" id="clearCartButton" type="button">Clear Cart</button>
+        <a class="continue-shopping" href="discover.html">Continue shopping</a>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="cart.js"></script><script type="module" src="cart-count.js"></script>
+</body>
+</html>

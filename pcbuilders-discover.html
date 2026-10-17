@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discover | PCBuilders</title>
+  <style>
+    @font-face {
+      font-family: Arimo;
+      src: url("font/Arimo-VariableFont_wght.ttf") format("truetype");
+      font-display: swap;
+    }
+    @font-face {
+      font-family: Horizon;
+      src: url("font/Horizon.otf") format("opentype");
+      font-display: swap;
+    }
+
+    :root {
+      --red: #e00000;
+      --white: #fff;
+      --page-width: 1120px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      color: var(--white);
+      font-family: Arimo, Arial, sans-serif;
+      background-color: #05030d;
+      background-image:
+        linear-gradient(rgba(191, 165, 255, .11) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(191, 165, 255, .11) 2px, transparent 2px),
+        radial-gradient(ellipse at 50% 22%, rgba(84, 24, 190, .62), transparent 60%);
+      background-size: 64px 64px, 64px 64px, auto;
+      background-position: center top, center top, center top;
+      background-attachment: fixed;
+    }
+
+    .discover-page {
+      width: 100%;
+      padding: 0 0 56px;
+    }
+
+    .discover-heading {
+      margin: -5px 16px 12px;
+      text-align: center;
+      font-family: Horizon, Impact, sans-serif;
+      font-size: clamp(34px, 4.6vw, 56px);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: .01em;
+      color: #fff;
+    }
+
+    .discover-search {
+      width: min(var(--page-width), calc(100% - 48px));
+      min-height: 50px;
+      margin: 0 auto;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid #fff;
+      border-radius: 11px;
+      background: rgba(5, 3, 13, .26);
+    }
+
+    .discover-search svg {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      color: #fff;
+      opacity: .9;
+    }
+
+    .search-label {
+      flex: 0 0 auto;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .search-divider {
+      height: 34px;
+      width: 2px;
+      background: rgba(255, 255, 255, .85);
+      margin: 0 3px 0 17px;
+    }
+
+    #discoverSearchInput {
+      min-width: 0;
+      flex: 1;
+      height: 42px;
+      border: 0;
+      outline: 0;
+      color: #fff;
+      font: inherit;
+      background: transparent;
+    }
+
+    #discoverSearchInput::placeholder { color: rgba(255,255,255,.6); }
+
+    .discover-rule {
+      width: min(var(--page-width), calc(100% - 48px));
+      margin: 18px auto 20px;
+      border: 0;
+      border-top: 2px solid rgba(255,255,255,.9);
+    }
+
+    .discover-grid {
+      width: min(var(--page-width), calc(100% - 48px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      column-gap: 24px;
+      row-gap: 12px;
+      align-items: start;
+    }
+
+    .discover-item {
+      min-width: 0;
+      color: #fff;
+    }
+
+    .discover-item[hidden] { display: none; }
+
+    .topitem_item {
+      height: 200px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .topitem_product_image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    .topitem_item.image-missing {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      background: linear-gradient(135deg, #f9f8ff, #dfd9f4);
+      color: #33245b;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .top_item_innerui {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: stretch;
+      pointer-events: none;
+    }
+
+    .topitem_trophylogo {
+      align-self: flex-end;
+      width: 38px;
+      height: 38px;
+      margin-right: 8px;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1cb78d;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .topitem_trophylogo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .topitem_price {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 5px;
+      background: var(--red);
+      color: #fff;
+      font-size: clamp(18px, 2vw, 26px);
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    .topitem_price p { color: inherit; }
+
+    .topitem_description {
+      width: 100%;
+      height: 54px;
+      padding: 9px 0 0;
+      overflow: hidden;
+    }
+
+    .topitem_description p {
+      width: 100%;
+      color: #fff;
+      font-size: 10px;
+      line-height: 1.25;
+      text-align: justify;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      overflow-wrap: anywhere;
+    }
+
+    .no-results {
+      display: none;
+      width: min(var(--page-width), calc(100% - 48px));
+      margin: 28px auto;
+      color: rgba(255,255,255,.85);
+      text-align: center;
+    }
+    .no-results.visible { display: block; }
+
+    @media (max-width: 1050px) {
+      .discover-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 820px) {
+      .discover-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 18px; }
+      .topitem_item { height: 190px; }
+    }
+
+    @media (max-width: 600px) {
+      .discover-heading { margin-top: 12px; }
+      .discover-search, .discover-rule, .discover-grid, .no-results {
+        width: calc(100% - 28px);
+      }
+      .discover-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 14px; }
+      .topitem_item { height: 180px; }
+      .topitem_price { min-height: 36px; font-size: 19px; }
+      .topitem_description { height: 58px; padding-top: 7px; }
+      .search-label { font-size: 14px; }
+      .search-divider { margin-left: 8px; }
+    }
+
+    @media (max-width: 360px) {
+      .discover-grid { grid-template-columns: 1fr; }
+      .topitem_item { height: 230px; }
+      .topitem_description { height: auto; min-height: 45px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="discover-page">
+    <h1 class="discover-heading">DISCOVER</h1>
+
+    <label class="discover-search" for="discoverSearchInput">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M3 4h18l-7 8v7l-4 2v-9L3 4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+      </svg>
+      <span class="search-label">Search:</span>
+      <span class="search-divider" aria-hidden="true"></span>
+      <input id="discoverSearchInput" type="search" placeholder="Search products..." autocomplete="off">
+    </label>
+
+    <hr class="discover-rule">
+
+    <section class="discover-grid" id="discoverGrid" aria-label="Discover PC parts and accessories">
+      <!-- Update any image src below to match the exact filename in your images folder. -->
+      <article class="discover-item" data-search="wooting 80he pcr plastic 8k hz polling rate rapid trigger keyboard mechanical">
+        <div class="topitem_item" data-placeholder="Wooting keyboard image">
+          <img class="topitem_product_image" src="images/topitems/Wooting 80HE PCR Plastic 8k Hz Polling Rate Rapid Trigger Keyboard.png" alt="Wooting 80HE keyboard" onerror="this.remove(); this.parentElement.classList.add('image-missing'); this.parentElement.textContent=this.parentElement.dataset.placeholder;">
+          <div class="top_item_innerui"><div></div><div class="topitem_price"><p>PHP16490</p></div></div>
+        </div>
+        <div class="topitem_description"><p>Wooting 80HE PCR Plastic 8k Hz Polling Rate Rapid Trigger Keyboard</p></div>
+      </article>
+
+      <article class="discover-item" data-search="rapoo n1600 wired optical silent mouse 1000 dpi">
+        <div class="topitem_item" data-placeholder="Rapoo mouse image">
+          <img class="topitem_product_image" src="images/limitedtime_items/Rapoo N1600 Wired Optical Silent Mouse Anti-slip scroll wheel 1000 DPI tracking engine.png" alt="Rapoo N1600 wired mouse" onerror="this.remove(); this.parentElement.classList.add('image-missing'); this.parentElement.textContent=this.parentElement.dataset.placeholder;">
+          <div class="top_item_innerui"><div></div><div class="topitem_price"><p>PHP899</p></div></div>
+        </div>
+        <div class="topitem_description"><p>Rapoo N1600 Wired Optical Silent Mouse Anti-slip scroll wheel 1000 DPI tracking engine</p></div>
+      </article>
+
+      <article class="discover-item" data-search="nvision monitor 22 24 27 inch ips 100hz 144hz frameless fhd gaming">
+        <div class="topitem_item" data-placeholder="Nvision monitor image">
+          <img class="topitem_product_image" src="images/topitems/Nvision 22 24 27 Inch IPS Monitor 100HZ144Hz Framless FHD Gaming Monitor PC Laptop Monitor.png" alt="Nvision gaming monitor" onerror="this.remove(); this.parentElement.classList.add('image-missing'); this.parentElement.textContent=this.parentElement.dataset.placeholder;">
+          <div class="top_item_innerui"><div></div><div class="topitem_price"><p>PHP3667</p></div></div>
+        </div>
+        <div class="topitem_description"><p>Nvision 22 24 27 Inch IPS Monitor 100HZ/144Hz Frameless FHD Gaming Monitor PC Laptop Monitor</p></div>
+      </article>
+
+      <article class="discover-item" data-search="expose led monitor 22 24 27 inch 1080p 75hz 60hz">
+        <div class="topitem_item" data-placeholder="Expose monitor image">
+          <img class="topitem_product_image" src="images/limitedtime_items/Expose 27242219 Inch Led Monitor 1080P 75hz 60hz Flat 1ms Monitor For PC Computer Laptop N200HD.png" alt="Expose LED monitor" onerror="this.remove(); this.parentElement.classList.add('image-missing'); this.parentElement.textContent=this.parentElement.dataset.placeholder;">
+          <div class="top_item_innerui"><div></div><div class="topitem_price"><p>PHP2089</p></div></div>
+        </div>
+        <div class="topitem_description"><p>Expose 22/24/27 Inch LED Monitor 1080P 75Hz Flat 1ms Monitor for PC and Laptop</p></div>
+      </article>
+
+      <article class="discover-item" data-search="tishric rgb mini mechanical keyboard usb gaming key macro">
+        <div class="topitem_item" data-placeholder="TISHRIC keyboard image">
+          <img class="topitem_product_image" src="images/topitems/TISHRIC RGB Mini Mechanical Keyboard.png" alt="TISHRIC RGB mini mechanical keyboard" onerror="this.remove(); this.parentElement.classList.add('image-missing'); this.parentElement.textContent=this.parentElement.dataset.placeholder;">
+          <div class="top_item_innerui"><div></div><div class="topitem_price"><p>PHP1307</p></div></div>
+        </div>
+        <div class="topitem_description"><p>TISHRIC RGB Mini Mechanical Keyboard USB 3/4/6+1 Key Macro Compatible Gaming Keyboard</p></div>
+      </article>
+
+      <article class="discover-item" data-search="multimedia speaker 2.0 weiyu speakers">
+        <div class="topitem_item" data-placeholder="Speaker image">
+          <img class="topitem_product_image" src="images/limitedtime_items/multimedia_speaker_2.0.png" alt="Multimedia 2.0 speakers" onerror="this.remove(); this.parentElement.classList.add('image-missing'); this.parentElement.textContent=this.parentElement.dataset.placeholder;">
+          <div class="top_item_innerui"><div></div><div class="topitem_price"><p>PHP249</p></div></div>
+        </div>
+        <div class="topitem_description"><p>Multimedia Speaker 2.0 Compact Desktop Speakers for PC and Laptop</p></div>
+      </article>
+
+      <article class="discover-item" data-search="aisurix rx580 8gb graphics card gpu gaming">
+        <div class="topitem_item" data-placeholder="Aisurix graphics card image">
+          <img class="topitem_product_image" src="images/topitems/AISURIX RX580 8GB Graphics Card.png" alt="Aisurix RX580 8GB graphics card" onerror="this.remove(); this.parentElement.classList.add('image-missing'); this.parentElement.textContent=this.parentElement.dataset.placeholder;">
+          <div class="top_item_innerui"><div></div><div class="topitem_price"><p>PHP5200</p></div></div>
+        </div>
+        <div class="topitem_description"><p>AISURIX RX580 8GB Memory Graphics Card for Gaming PCs</p></div>
+      </article>
+
+      <article class="discover-item" data-search="aula f75 tri mode gasket mechanical keyboard">
+        <div class="topitem_item" data-placeholder="Aula F75 keyboard image">
+          <img class="topitem_product_image" src="images/topitems/AULA F75 Tri-Mode Gasket Mechanical Keyboard.png" alt="Aula F75 mechanical keyboard" onerror="this.remove(); this.parentElement.classList.add('image-missing'); this.parentElement.textContent=this.parentElement.dataset.placeholder;">
+          <div class="top_item_innerui"><div></div><div class="topitem_price"><p>PHP2499</p></div></div>
+        </div>
+        <div class="topitem_description"><p>AULA F75 Tri-Mode Gasket Mechanical Keyboard</p></div>
+      </article>
+
+      <article class="discover-item" data-search="wooting 80he keyboard mechanical repeat">
+        <div class="topitem_item" data-placeholder="Wooting keyboard image">
+          <img class="topitem_product_image" src="images/topitems/Wooting 80HE PCR Plastic 8k Hz Polling Rate Rapid Trigger Keyboard.png" alt="Wooting 80HE keyboard" onerror="this.remove(); this.parentElement.classList.add('image-missing'); this.parentElement.textContent=this.parentElement.dataset.placeholder;">
+          <div class="top_item_innerui"><div></div><div class="topitem_price"><p>PHP16490</p></div></div>
+        </div>
+        <div class="topitem_description"><p>Wooting 80HE PCR Plastic 8k Hz Polling Rate Rapid Trigger Keyboard</p></div>
+      </article>
+
+      <article class="discover-item" data-search="rapoo n1600 wired optical silent mouse 1000 dpi repeat">
+        <div class="topitem_item" data-placeholder="Rapoo mouse image">
+          <img class="topitem_product_image" src="images/limitedtime_items/Rapoo N1600 Wired Optical Silent Mouse Anti-slip scroll wheel 1000 DPI tracking engine.png" alt="Rapoo N1600 wired mouse" onerror="this.remove(); this.parentElement.classList.add('image-missing'); this.parentElement.textContent=this.parentElement.dataset.placeholder;">
+          <div class="top_item_innerui"><div></div><div class="topitem_price"><p>PHP899</p></div></div>
+        </div>
+        <div class="topitem_description"><p>Rapoo N1600 Wired Optical Silent Mouse Anti-slip scroll wheel 1000 DPI tracking engine</p></div>
+      </article>
+    </section>
+
+    <p class="no-results" id="noResults">No products found. Try another search.</p>
+  </main>
+
+  <script>
+    // Simple client-side product search. It filters the visible product cards.
+    const discoverSearchInput = document.getElementById("discoverSearchInput");
+    const discoverItems = [...document.querySelectorAll(".discover-item")];
+    const noResults = document.getElementById("noResults");
+
+    discoverSearchInput.addEventListener("input", () => {
+      const query = discoverSearchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      discoverItems.forEach((item) => {
+        const searchableText = `${item.dataset.search} ${item.textContent}`.toLowerCase();
+        const matches = searchableText.includes(query);
+        item.hidden = !matches;
+        if (matches) visibleCount++;
+      });
+
+      noResults.classList.toggle("visible", visibleCount === 0);
+    });
+  </script>
+</body>
+</html>

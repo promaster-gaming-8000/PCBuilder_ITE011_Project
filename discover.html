@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discover | PCBuilders</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="storefront.css">
+</head>
+<body class="store-page">
+  <canvas class="smoke_background" aria-hidden="true"></canvas>
+  <header class="store-header">
+    <a class="store-logo" href="index.html" aria-label="PCBuilders home"><img src="logo/PCBuilder_logo_square.svg" alt="PCBuilders logo"></a>
+    <nav class="store-nav" aria-label="Main navigation"><a href="index.html">Home</a><a class="active" href="discover.html">Discover</a><a href="index.html#pcbuilder">PC Builder</a></nav>
+    <a class="store-cart-link" href="cart.html">Cart <span id="cartCount">0</span></a>
+  </header>
+  <main class="discover-page standalone-discover">
+    <h1 class="discover-heading">DISCOVER</h1>
+    <label class="discover-search" for="discoverSearchInput">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 4h18l-7 8v7l-4 2v-9L3 4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /></svg>
+      <span class="search-label">Search:</span><span class="search-divider" aria-hidden="true"></span>
+      <input id="discoverSearchInput" type="search" placeholder="Search products..." autocomplete="off">
+    </label>
+    <hr class="discover-rule">
+    <p class="store-message" id="discoverStatus" role="status">Loading products...</p>
+    <section class="discover-grid" id="discoverGrid" aria-label="Discover PC parts and accessories"></section>
+    <p class="no-results" id="noResults">No matching products found. Try another search.</p>
+  </main>
+  <script type="module" src="discover.js"></script>
+  <script type="module" src="cart-count.js"></script>
+</body>
+</html>

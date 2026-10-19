@@ -1,0 +1,20 @@
+PCBUILDERS WEBSITE UPDATE NOTES
+
+Changes included:
+- Added a homepage footer based on the supplied reference image, including quick links, contact information, an email/message form, and copyright line.
+- Added an About Us section so the About Us navigation link has a destination.
+- Changed the Contact Us navigation link to scroll to the footer.
+- Connected the navbar search field to discover.html and pass the search query to the product search.
+- Added Show More pagination to the homepage discovery grid and standalone Discover page (10 products at a time).
+- Connected the help icon to help.html.
+- Connected SIGNUP | LOGIN to account.html.
+- Added an English/Filipino language selector for marked interface text.
+- Added a notification popover. It displays an empty state because no notification data source exists in the supplied project.
+- Left PC Builder as a coming-soon placeholder as requested.
+- Preserved the existing Supabase product queries and cart implementation.
+
+Important limitations:
+- The account page is a destination placeholder; authentication is not configured in the supplied project.
+- The footer form opens the visitor's default email app with a prefilled message. It does not send mail directly from the website because no email service/backend is configured.
+- The language selector translates the interface strings marked for English/Filipino. Supabase product names/descriptions and unmarked content are not automatically translated.
+- node_modules is intentionally not included in this source ZIP. From the SUPABASEE folder, run `npm install` to restore dependencies before running the project.

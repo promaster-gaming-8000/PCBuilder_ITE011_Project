@@ -253,6 +253,14 @@
       .topitem_item { height: 230px; }
       .topitem_description { height: auto; min-height: 45px; }
     }
+
+    /* Compact product cards on desktop and two-column cards on phones. */
+    .discover-grid { grid-template-columns: repeat(5, minmax(0, 190px)); justify-content: space-between; }
+    .topitem_item { aspect-ratio: 1 / 1; height: auto !important; }
+    @media (max-width: 1100px) { .discover-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    @media (max-width: 820px) { .discover-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 600px) { .discover-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 10px; } .topitem_price { font-size: 15px; } .topitem_description { font-size: 11px; line-height: 1.3; } }
+    @media (max-width: 380px) { .discover-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 9px; } .topitem_price { font-size: 12px; } .topitem_description { font-size: 10px; } }
   </style>
 </head>
 <body>

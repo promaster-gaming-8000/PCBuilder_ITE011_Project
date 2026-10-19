@@ -23,14 +23,14 @@
     <nav class="mainnav">
       <div class="top_mainnav">
         <div class="left_mainnav">
-          <a href="#home">Home</a>
-          <a href="#about">About Us</a>
-          <a href="#contact">Contact Us</a>
-          <a class="buttonnav" id="pcparts" href="discover.html">PC Parts</a>
-          <a href="#pcbuilder">PC Builder</a>
+          <a href="#home" data-i18n="home">Home</a>
+          <a href="about.html" data-i18n="about">About Us</a>
+          <a href="#contact" data-i18n="contact">Contact Us</a>
+          <a class="buttonnav" id="pcparts" href="discover.html" data-i18n="pcParts">PC Parts</a>
+          <a href="#pcbuilder" class="pcbuilder-coming-soon" data-i18n="pcBuilder">PC Builder</a>
         </div>
         <div class="right_mainnav">
-          <button class="buttonnav">
+          <button class="buttonnav help-button" type="button" aria-label="Help page" title="Help" onclick="window.location.href='help.html'">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
               class="bi bi-question-circle" viewBox="0 0 16 16">
               <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
@@ -38,23 +38,31 @@
                 d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
             </svg>
           </button>
-          <button class="buttonnav">
+          <button class="buttonnav language-button" id="languageButton" type="button" aria-haspopup="true" aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-globe"
               viewBox="0 0 16 16">
               <path
                 d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z" />
             </svg>
-            English
-            <img src="assets/dropdown.png" alt="dropdown" style="width: 20px;">
+            <span id="currentLanguage">English</span>
+            <img src="assets/dropdown.png" alt="" style="width: 20px;">
           </button>
-          <a href="#login">SIGNUP | LOGIN</a>
-          <button class="buttonnav">
+          <div class="language-menu" id="languageMenu" role="menu" hidden>
+            <button type="button" data-language="en" role="menuitem">English</button>
+            <button type="button" data-language="fil" role="menuitem">Filipino</button>
+          </div>
+          <a href="account.html" data-i18n="signupLogin">SIGNUP | LOGIN</a>
+          <button class="buttonnav notification-button" id="notificationButton" type="button" aria-label="Notifications" aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell"
               viewBox="0 0 16 16">
               <path
                 d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
             </svg>
           </button>
+          <div class="notification-panel" id="notificationPanel" role="status" hidden>
+            <strong data-i18n="notifications">Notifications</strong>
+            <p data-i18n="noNotifications">You have no new notifications.</p>
+          </div>
         </div>
       </div>
 
@@ -78,7 +86,7 @@
             <p class="search_p">Search:</p>
             <div class="divider"></div>
 
-            <input class="search-input" type="text" placeholder="Enter your search here">
+            <input class="search-input" id="navbarSearchInput" type="search" placeholder="Enter your search here" aria-label="Search products" data-i18n-placeholder="searchProducts">
 
           </div>
           <a href="cart.html" class="buttonnav store-cart-home" aria-label="Shopping cart">
@@ -96,11 +104,11 @@
 
   <main id="home">
     <div class="main_ui">
-      <p>Build your dream PC Build here<br>
+      <p data-i18n="heroCopy">Build your dream PC Build here<br>
         with us in PCBuilders.
       </p>
       <div class="main_ui_buttons">
-        <button class="white_outlined_button">BUY NOW</button>
+        <button class="white_outlined_button" data-i18n="buyNow">BUY NOW</button>
         <a class="red_button">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" class="bi bi-mouse2-fill"
             viewBox="0 0 16 16">
@@ -138,8 +146,8 @@
   <section class="limitedtime">
     <div class="left_limitedtime">
       <div>
-        <p class="big_limitedtime">LIMITED TIME</p>
-        <p class="big_limitedtime1">DEALS</p>
+        <p class="big_limitedtime" data-i18n="limitedTime">LIMITED TIME</p>
+        <p class="big_limitedtime1" data-i18n="deals">DEALS</p>
       </div>
       <div class="timer_limitedtime">
         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#ffa800" class="bi bi-alarm"
@@ -152,8 +160,7 @@
           <span>00</span> : <span>05</span> : <span>20</span>
         </p>
       </div>
-      <p style="text-align: left; color: white;">Here at PCBuilders, we offer the BEST of the BEST deals to our
-        customers.<br> Never miss out with the BEST deals and buy them NOW!</p>
+      <p style="text-align: left; color: white;"><span data-i18n="dealsDescription">Here at PCBuilders, we offer the BEST of the BEST deals to our customers. Never miss out with the BEST deals and buy them NOW!</span></p>
       <div class="home-deals-grid" id="homeDealsGrid">
         <p class="store-message">Loading deals from Supabase...</p>
       </div>
@@ -180,17 +187,17 @@
   </section>
   <section class="topitems">
     <div style="display: flex; flex-direction: column; align-items: end;">
-      <p class="big_topitems">TOP</p>
-      <p class="big_topitems1">ITEMS</p>
+      <p class="big_topitems" data-i18n="top">TOP</p>
+      <p class="big_topitems1" data-i18n="items">ITEMS</p>
     </div>
-    <p style="margin: 20px;">See what people buy the most here at PCBuilders!</p>
+    <p style="margin: 20px;"><span data-i18n="topItemsDescription">See what people buy the most here at PCBuilders!</span></p>
     <div class="home-topitems-grid" id="homeTopItemsGrid">
       <p class="store-message">Loading top items from Supabase...</p>
     </div>
   </section>
 
   <section class="shopfor">
-    <p class="big_shopfor">SHOP FOR:</p>
+    <p class="big_shopfor" data-i18n="shopFor">SHOP FOR:</p>
     <div class="shop-collage">
       <div class="shop-collage__tile shop-collage__pc">
         <img src="images/shopfor/systemunit.png" alt="Custom-built PC" />
@@ -208,17 +215,13 @@
         <img src="images/shopfor/graphics_card.png" alt="Graphics card" />
       </div>
     </div>
-    <p style="margin: 20px;">Buy PC Parts or Complete PC builds here in<br> our large catalog of PC Related items</p>
-    <button class="white_outlined_button" style="font-size: 25px; margin: 20px;">BUY NOW</button>
+    <p style="margin: 20px;"><span data-i18n="shopDescription">Buy PC Parts or Complete PC builds here in our large catalog of PC Related items</span></p>
+    <button class="white_outlined_button" style="font-size: 25px; margin: 20px;" data-i18n="buyNow">BUY NOW</button>
   </section>
-
-  <section class="proventrusted">
-    <p class="big_proventrusted">PROVEN AND</p>
-    <p class="big_proventrusted_Outlined">TRUSTED</p>
-    <p style="width: 800px; text-align: justify; border-left: 3px solid #8c52ff; padding-left: 10px;">We build trust
-      through quality, transparency, and reliable service. Every PC build is carefully selected with compatible, genuine
-      components, helping customers get dependable performance and peace of mind. Component authenticity and
-      traceability are important foundations of trust in computing hardware.</p>
+<section class="proventrusted">
+    <p class="big_proventrusted" data-i18n="provenHeading">PROVEN AND</p>
+    <p class="big_proventrusted_Outlined" data-i18n="trustedHeading">TRUSTED</p>
+    <p class="proventrusted-copy" data-i18n="provenDescription" style="width: 800px; text-align: justify; border-left: 3px solid #8c52ff; padding-left: 10px;">We build trust through quality, transparency, and reliable service. Every PC build is carefully selected with compatible, genuine components, helping customers get dependable performance and peace of mind. Component authenticity and traceability are important foundations of trust in computing hardware.</p>
 
 
     <div class="infinite_scrolling_ratings">
@@ -368,7 +371,7 @@
       </svg>
       <span class="search-label">Search:</span>
       <span class="search-divider" aria-hidden="true"></span>
-      <input id="discoverSearchInput" type="search" placeholder="Search products..." autocomplete="off">
+      <input id="discoverSearchInput" type="search" placeholder="Search products..." autocomplete="off" data-i18n-placeholder="searchProducts">
     </label>
 
     <hr class="discover-rule">
@@ -377,10 +380,52 @@
     <section class="discover-grid" id="discoverGrid" aria-label="Discover PC parts and accessories"></section>
 
     <p class="no-results" id="noResults">No products found. Try another search.</p>
+    <div class="show-more-wrap"><button type="button" id="showMoreProducts" class="show-more-button" hidden>Show More</button></div>
   </section>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#home" aria-label="PCBuilders home" class="footer-logo">LOGO</a>
+        <span>PCBuilders - Build Your Dreams.</span>
+      </div>
+      <div class="footer-columns">
+        <div class="footer-column footer-quick-links">
+          <h2 data-i18n="quickLinks">Quick links</h2>
+          <ul>
+            <li><a href="#home" data-i18n="home">Home</a></li>
+            <li><a href="about.html" data-i18n="about">About Us</a></li>
+            <li><a href="#contact" data-i18n="contact">Contact Us</a></li>
+            <li><a href="discover.html" data-i18n="pcParts">PC Parts</a></li>
+            <li><a href="#pcbuilder" class="pcbuilder-coming-soon" data-i18n="pcBuilder">PC Builder</a></li>
+          </ul>
+        </div>
+        <div class="footer-column footer-contact-details">
+          <h2 data-i18n="contactUsHeading">Contact Us</h2>
+          <p><span class="footer-contact-icon" aria-hidden="true">●</span> Quezon City, Philippines</p>
+          <p><span class="footer-contact-icon" aria-hidden="true">✉</span> <a href="mailto:pcbuilder@gmail.com">pcbuilder@gmail.com</a></p>
+          <p><span class="footer-contact-icon" aria-hidden="true">♧</span> <a href="tel:+632123456789">(+63)12 345 6789</a></p>
+        </div>
+        <div class="footer-column footer-message-column">
+          <h2 data-i18n="getInTouch">Get in touch</h2>
+          <form id="footerContactForm" class="footer-contact-form">
+            <label class="sr-only" for="footerEmail" data-i18n="yourEmail">Your email address</label>
+            <input id="footerEmail" name="email" type="email" placeholder="Your email address" required data-i18n-placeholder="yourEmail">
+            <label class="sr-only" for="footerMessage" data-i18n="yourMessage">Your message</label>
+            <textarea id="footerMessage" name="message" rows="3" aria-label="Your message" required></textarea>
+            <button type="submit" data-i18n="submit">SUBMIT</button>
+            <p id="footerFormStatus" class="footer-form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 PCBuilders. <span data-i18n="allRightsReserved">All Rights Reserved.</span></p></div>
+    </div>
+  </footer>
+
   <script type="module" src="home-products.js"></script>
   <script type="module" src="discover.js"></script>
   <script type="module" src="cart-count.js"></script>
+  <script src="site-ui.js"></script>
   <script src="script.js"></script>
 </body>
 

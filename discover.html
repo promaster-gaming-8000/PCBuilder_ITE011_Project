@@ -20,13 +20,15 @@
     <label class="discover-search" for="discoverSearchInput">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 4h18l-7 8v7l-4 2v-9L3 4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /></svg>
       <span class="search-label">Search:</span><span class="search-divider" aria-hidden="true"></span>
-      <input id="discoverSearchInput" type="search" placeholder="Search products..." autocomplete="off">
+      <input id="discoverSearchInput" type="search" placeholder="Search products..." autocomplete="off" data-i18n-placeholder="searchProducts">
     </label>
     <hr class="discover-rule">
     <p class="store-message" id="discoverStatus" role="status">Loading products...</p>
     <section class="discover-grid" id="discoverGrid" aria-label="Discover PC parts and accessories"></section>
     <p class="no-results" id="noResults">No matching products found. Try another search.</p>
+    <div class="show-more-wrap"><button type="button" id="showMoreProducts" class="show-more-button" hidden>Show More</button></div>
   </main>
+  <script src="site-ui.js"></script>
   <script type="module" src="discover.js"></script>
   <script type="module" src="cart-count.js"></script>
 </body>

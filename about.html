@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn more about PCBuilders and our approach to PC parts and custom builds.">
+  <title>About Us | PCBuilders</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="storefront.css">
+
+  <style>
+    @font-face {
+      font-family: Horizon;
+      src: url("font/Horizon.otf") format("opentype");
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: Horizon_Outlined;
+      src: url("font/Horizon_Outlined.otf") format("opentype");
+      font-display: swap;
+    }
+
+    .about-page {
+      color: #fff;
+      min-height: 70vh;
+      padding: 130px clamp(18px, 3vw, 48px) 80px;
+      overflow: hidden;
+    }
+
+    .about-hero {
+      position: relative;
+      width: min(1440px, 100%);
+      margin: 0 auto 38px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    .about-title-eyebrow {
+      width: 100%;
+      margin: 0 0 12px;
+      text-align: right;
+    }
+
+    .about-title {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      margin: 0 0 22px;
+      text-align: right;
+      line-height: .88;
+      letter-spacing: .01em;
+      text-transform: uppercase;
+    }
+
+    .about-title .title-solid,
+    .about-title .title-outline {
+      display: block;
+      white-space: nowrap;
+    }
+
+    .about-title .title-solid {
+      font-family: Horizon, Impact, sans-serif;
+      font-size: clamp(48px, 8.4vw, 124px);
+      color: #fff;
+    }
+
+    .about-title .title-outline {
+      margin-top: 10px;
+      font-family: Horizon_Outlined, Horizon, Impact, sans-serif;
+      font-size: clamp(48px, 8.4vw, 124px);
+      color: transparent;
+      -webkit-text-stroke: 1px #9a5bff;
+      text-shadow: 0 0 18px rgba(140, 82, 255, .25);
+    }
+
+    .about-eyebrow {
+      margin: 0 0 14px;
+      color: #1cb78d;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .about-hero-body {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      align-items: center;
+      gap: clamp(18px, 4vw, 56px);
+      min-height: 300px;
+    }
+
+    .about-intro {
+      position: relative;
+      z-index: 2;
+      padding: 4px 0 4px clamp(16px, 2vw, 30px);
+      border-left: 2px solid #8c52ff;
+    }
+
+    .about-lead {
+      max-width: 650px;
+      margin: 0;
+      color: rgba(255, 255, 255, .9);
+      font-size: clamp(16px, 1.45vw, 21px);
+      line-height: 1.55;
+    }
+
+    .about-hero-image {
+      width: 100%;
+      max-width: 760px;
+      justify-self: end;
+      align-self: center;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 35px rgba(0, 0, 0, .35));
+    }
+
+    .about-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .about-cta a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 11px 18px;
+      border: 1px solid rgba(255, 255, 255, .7);
+      border-radius: 5px;
+      color: #fff;
+      font-size: clamp(13px, 1vw, 15px);
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .about-cta a:first-child {
+      border-color: #8500ff;
+      background: #8500ff;
+    }
+
+    .about-cta a:hover {
+      transform: translateY(-2px);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    .about-card,
+    .about-values {
+      padding: clamp(22px, 3vw, 34px);
+      border: 1px solid rgba(255, 255, 255, .13);
+      border-radius: 10px;
+      background: rgba(16, 9, 35, .82);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, .12);
+    }
+
+    .about-card h2,
+    .about-values h2 {
+      margin: 0 0 13px;
+      color: #fff;
+      font-size: clamp(21px, 2.4vw, 28px);
+    }
+
+    .about-card p,
+    .about-values p {
+      color: rgba(255, 255, 255, .8);
+      line-height: 1.75;
+    }
+
+    .about-values {
+      width: min(1180px, 100%);
+      margin: 22px auto 0;
+      border-left: 4px solid #8c52ff;
+      border-radius: 0;
+      background: rgba(140, 82, 255, .08);
+    }
+
+    .about-values h2 {
+      font-size: clamp(22px, 2.6vw, 30px);
+    }
+
+    @media (max-width: 900px) {
+      .about-page {
+        padding-top: 155px;
+      }
+
+      .about-title .title-solid,
+      .about-title .title-outline {
+        font-size: clamp(48px, 9vw, 82px);
+      }
+
+      .about-hero-body {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .about-page {
+        padding: 190px 16px 48px;
+      }
+
+      .about-hero {
+        margin-bottom: 28px;
+      }
+
+      .about-title-eyebrow {
+        text-align: center;
+      }
+
+      .about-title {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .about-title .title-solid,
+      .about-title .title-outline {
+        font-size: clamp(36px, 10vw, 62px);
+        letter-spacing: 0;
+      }
+
+      .about-title .title-outline {
+        margin-top: 7px;
+        -webkit-text-stroke-width: .8px;
+      }
+
+      .about-hero-body {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .about-intro {
+        padding-left: 14px;
+      }
+
+      .about-lead {
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .about-hero-image {
+        width: min(100%, 460px);
+        justify-self: center;
+        max-height: 300px;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .about-card p,
+      .about-values p {
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .about-page {
+        padding-right: 12px;
+        padding-left: 12px;
+      }
+
+      .about-title .title-solid,
+      .about-title .title-outline {
+        font-size: clamp(30px, 9.5vw, 38px);
+      }
+
+      .about-cta {
+        flex-direction: column;
+      }
+
+      .about-cta a {
+        width: 100%;
+      }
+    }
+
+    /* ============================
+   WHY CHOOSE US SECTION
+============================ */
+
+    .why-choose-section {
+      width: 100%;
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: clamp(35px, 5vw, 70px) clamp(16px, 2.5vw, 35px) 65px;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .why-heading {
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.22em;
+      font-size: clamp(34px, 5.3vw, 70px);
+      line-height: 1.1;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .why-heading .why-solid {
+      font-family: Horizon, Impact, sans-serif;
+      color: #fff;
+    }
+
+    .why-heading .why-outline {
+      font-family: Horizon_Outlined, Horizon, Impact, sans-serif;
+      color: transparent;
+      -webkit-text-stroke: 1px #9855ff;
+      text-shadow: 0 0 15px rgba(152, 85, 255, 0.25);
+    }
+
+    .why-intro {
+      max-width: 850px;
+      margin: 25px 0 65px auto;
+      padding: 8px 22px 8px 0;
+      border-right: 2px solid #8c52ff;
+      text-align: right;
+      font-size: clamp(15px, 1.45vw, 20px);
+      line-height: 1.5;
+    }
+
+    .why-intro strong {
+      font-weight: 800;
+    }
+
+    .why-cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(16px, 3.2vw, 42px);
+      align-items: center;
+      padding: 8px 0 18px;
+    }
+
+    .why-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-width: 0;
+      min-height: 265px;
+      padding: 22px 15px 25px;
+      border: 1px solid rgba(200, 194, 255, 0.4);
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.055);
+      box-shadow:
+        inset 0 0 12px rgba(255, 255, 255, 0.035),
+        0 0 3px rgba(255, 255, 255, 0.12);
+      text-align: center;
+      transform: rotate(0deg) translateY(0);
+      transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
+      transform-origin: center;
+    }
+
+    .why-card:hover {
+      transform: rotate(7deg) translateY(-5px);
+      border-color: rgba(190, 150, 255, 0.9);
+      background: rgba(140, 82, 255, 0.1);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.22);
+      z-index: 2;
+    }
+
+    .why-card h3 {
+      width: 100%;
+      min-height: 20px;
+      margin: 0 0 13px;
+      color: #fff;
+      font-size: clamp(11px, 1.05vw, 15px);
+      line-height: 1.35;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .why-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 75px;
+      margin-bottom: 15px;
+      color: #8652e8;
+    }
+
+    .why-icon svg {
+      width: 65px;
+      height: 65px;
+      max-width: 100%;
+      fill: currentColor;
+    }
+
+    .why-card p {
+      max-width: 210px;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, 0.95);
+      font-size: clamp(13px, 1.1vw, 16px);
+      line-height: 1.4;
+    }
+
+    /* Tablet */
+    @media (max-width: 950px) {
+      .why-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .why-card {
+        min-height: 245px;
+      }
+
+      .why-card h3 {
+        font-size: clamp(12px, 1.8vw, 15px);
+      }
+
+      .why-card p {
+        font-size: clamp(14px, 1.8vw, 16px);
+      }
+
+      .why-intro {
+        margin-bottom: 40px;
+      }
+    }
+
+    /* Phone */
+    @media (max-width: 520px) {
+      .why-choose-section {
+        padding: 35px 14px 45px;
+      }
+
+      .why-heading {
+        gap: 0.18em;
+        font-size: clamp(27px, 7.5vw, 39px);
+        line-height: 1.2;
+      }
+
+      .why-heading .why-outline {
+        -webkit-text-stroke-width: 0.7px;
+      }
+
+      .why-intro {
+        margin: 20px 0 30px;
+        padding-right: 12px;
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .why-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px 12px;
+        padding: 5px 0 12px;
+      }
+
+      .why-card {
+        min-height: 225px;
+        padding: 17px 10px 20px;
+        border-radius: 24px;
+      }
+
+      .why-card:hover {
+        transform: rotate(4deg) translateY(-3px);
+      }
+
+      .why-card h3 {
+        min-height: 32px;
+        margin-bottom: 8px;
+        font-size: 11px;
+      }
+
+      .why-icon {
+        height: 60px;
+        margin-bottom: 10px;
+      }
+
+      .why-icon svg {
+        width: 52px;
+        height: 52px;
+      }
+
+      .why-card p {
+        font-size: 12px;
+        line-height: 1.45;
+      }
+    }
+
+    /* Respect reduced-motion settings */
+    @media (prefers-reduced-motion: reduce) {
+      .why-card {
+        transition: none;
+      }
+
+      .why-card:hover {
+        transform: none;
+      }
+    }
+
+    /* ==========================================
+   PROVEN AND TRUSTED
+========================================== */
+
+    .proventrusted {
+      width: 100%;
+      max-width: 1600px;
+      min-height: 600px;
+      margin: 0 auto;
+      padding: clamp(35px, 5vw, 70px) clamp(20px, 3vw, 48px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr);
+      align-items: stretch;
+      gap: clamp(25px, 4vw, 60px);
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .proventrusted-content {
+      min-width: 0;
+    }
+
+    .proventrusted .big_proventrusted,
+    .proventrusted .big_proventrusted_Outlined {
+      margin: 0;
+      font-size: clamp(38px, 5.2vw, 76px);
+      line-height: 1.08;
+      overflow-wrap: normal;
+    }
+
+    .proventrusted .big_proventrusted {
+      font-family: Horizon, Impact, sans-serif;
+      color: #fff;
+    }
+
+    .proventrusted .big_proventrusted_Outlined {
+      font-family: Horizon_Outlined, Horizon, Impact, sans-serif;
+      color: transparent;
+      -webkit-text-stroke: 1px #9855ff;
+      text-shadow: 0 0 15px rgba(152, 85, 255, .25);
+    }
+
+    .proventrusted .proventrusted-copy {
+      width: 100%;
+      max-width: 800px;
+      margin: 26px 0 45px;
+      padding: 0 0 0 16px;
+      border-left: 2px solid #8c52ff;
+      color: rgba(255, 255, 255, .92);
+      font-size: clamp(15px, 1.4vw, 20px);
+      line-height: 1.55;
+      text-align: left;
+    }
+
+    /* Optional statistics card inspired by your reference image */
+    .trust-stat {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      width: min(100%, 530px);
+      min-height: 185px;
+      padding: clamp(20px, 3vw, 30px);
+      border: 1px solid rgba(140, 82, 255, .8);
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(20, 17, 36, .96), rgba(8, 6, 19, .95));
+      box-shadow: 0 0 25px rgba(96, 41, 185, .12);
+    }
+
+    .trust-stat-icon {
+      display: grid;
+      place-items: center;
+      flex: 0 0 48px;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      color: #a77aff;
+      background: rgba(140, 82, 255, .15);
+      font-size: 30px;
+    }
+
+    .trust-stat>div {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .trust-stat strong {
+      color: #fff;
+      font-size: clamp(30px, 3.5vw, 48px);
+      line-height: 1.1;
+    }
+
+    .trust-stat span:not(.trust-stat-icon) {
+      margin-top: 5px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .trust-stat small {
+      margin-top: 8px;
+      color: #aaa0d2;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* Vertical review columns */
+    .ratings-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(12px, 2vw, 24px);
+      height: 600px;
+      min-width: 0;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to bottom,
+          transparent,
+          #000 7%,
+          #000 93%,
+          transparent);
+      mask-image: linear-gradient(to bottom,
+          transparent,
+          #000 7%,
+          #000 93%,
+          transparent);
+    }
+
+    .infinite_scrolling_ratings {
+      position: relative;
+      min-width: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .ratings_track {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      will-change: transform;
+      animation: reviews-scroll-up 35s linear infinite;
+    }
+
+    .infinite_scrolling_ratings.scroll-reverse .ratings_track {
+      animation-name: reviews-scroll-down;
+      animation-duration: 42s;
+    }
+
+    .ratings_group {
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 auto;
+      gap: 16px;
+      width: 100%;
+      padding-bottom: 16px;
+    }
+
+    .user_rating {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      flex: 0 0 auto;
+      width: 100%;
+      min-width: 0;
+      min-height: 205px;
+      padding: 20px 13px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 27px;
+      background: linear-gradient(135deg, #302078, #160b36);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, .16);
+      text-align: center;
+      transform: rotate(0deg);
+      transition: transform .3s ease, border-color .3s ease;
+    }
+
+    .user_rating:hover {
+      transform: rotate(-3deg);
+      border-color: rgba(183, 145, 255, .65);
+    }
+
+    .user_rating_img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 66px;
+      height: 66px;
+      flex: 0 0 66px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      border-radius: 50%;
+      background: #25174b;
+    }
+
+    .user_rating_img img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+    }
+
+    .rating_description {
+      width: 100%;
+      min-width: 0;
+    }
+
+    .rating_username {
+      margin: 0 0 12px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+      overflow-wrap: anywhere;
+    }
+
+    .rating_comment {
+      margin: 0;
+      color: rgba(255, 255, 255, .92);
+      font-size: 14px;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+    }
+
+    /* Pause scrolling while the visitor reads a review */
+    .ratings-columns:hover .ratings_track {
+      animation-play-state: paused;
+    }
+
+    @keyframes reviews-scroll-up {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(-50%);
+      }
+    }
+
+    @keyframes reviews-scroll-down {
+      from {
+        transform: translateY(-50%);
+      }
+
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    /* Tablet */
+    @media (max-width: 900px) {
+      .proventrusted {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 30px;
+      }
+
+      .proventrusted .big_proventrusted,
+      .proventrusted .big_proventrusted_Outlined {
+        font-size: clamp(38px, 7vw, 64px);
+      }
+
+      .proventrusted .proventrusted-copy {
+        max-width: 100%;
+        margin-bottom: 28px;
+      }
+
+      .trust-stat {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .ratings-columns {
+        height: 490px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .user_rating {
+        min-height: 185px;
+      }
+    }
+
+    /* Phone */
+    @media (max-width: 520px) {
+      .proventrusted {
+        padding: 35px 15px 45px;
+        gap: 22px;
+      }
+
+      .proventrusted .big_proventrusted,
+      .proventrusted .big_proventrusted_Outlined {
+        font-size: clamp(30px, 8.5vw, 43px);
+        line-height: 1.15;
+      }
+
+      .proventrusted .proventrusted-copy {
+        margin: 18px 0 22px;
+        padding-left: 12px;
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .trust-stat {
+        min-height: 145px;
+        padding: 18px;
+        border-radius: 20px;
+      }
+
+      .trust-stat-icon {
+        flex-basis: 38px;
+        width: 38px;
+        height: 38px;
+        font-size: 23px;
+      }
+
+      .trust-stat strong {
+        font-size: 32px;
+      }
+
+      .trust-stat span:not(.trust-stat-icon) {
+        font-size: 15px;
+      }
+
+      .ratings-columns {
+        height: 410px;
+        gap: 12px;
+      }
+
+      .ratings_group {
+        gap: 12px;
+        padding-bottom: 12px;
+      }
+
+      .user_rating {
+        min-height: 170px;
+        padding: 15px 9px;
+        border-radius: 20px;
+      }
+
+      .user_rating_img {
+        width: 52px;
+        height: 52px;
+        flex-basis: 52px;
+        margin-bottom: 10px;
+      }
+
+      .rating_username {
+        margin-bottom: 8px;
+        font-size: 12px;
+      }
+
+      .rating_comment {
+        font-size: 12px;
+        line-height: 1.4;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ratings_track {
+        animation: none !important;
+      }
+
+      .user_rating {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas class="smoke_background" style="position:fixed;z-index:-1"></canvas>
+  <script type="module" src="main_three.js"></script>
+
+  <nav class="container_mainnav">
+    <nav class="top_infi_scroll">
+      <div class="announcement-bar">
+        <div id="announcement"></div>
+      </div>
+    </nav>
+    <nav class="mainnav">
+      <div class="top_mainnav">
+        <div class="left_mainnav">
+          <a href="index.html#home" data-i18n="home">Home</a>
+          <a href="about.html" data-i18n="about">About Us</a>
+          <a href="index.html#contact" data-i18n="contact">Contact Us</a>
+          <a href="discover.html" data-i18n="parts">PC Parts</a>
+          <a href="index.html#pcbuilder" data-i18n="builder">PC Builder</a>
+        </div>
+        <div class="right_mainnav">
+          <button class="buttonnav help-button" type="button" aria-label="Help page" title="Help"
+            onclick="window.location.href='help.html'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+              class="bi bi-question-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+              <path
+                d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
+            </svg>
+          </button>
+          <button class="buttonnav language-button" id="languageButton" type="button" aria-haspopup="true"
+            aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-globe"
+              viewBox="0 0 16 16">
+              <path
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z" />
+            </svg>
+            <span id="currentLanguage">English</span>
+            <img src="assets/dropdown.png" alt="" style="width: 20px;">
+          </button>
+          <div class="language-menu" id="languageMenu" role="menu" hidden>
+            <button type="button" data-language="en" role="menuitem">English</button>
+            <button type="button" data-language="fil" role="menuitem">Filipino</button>
+          </div>
+          <a href="account.html" data-i18n="signupLogin">SIGNUP | LOGIN</a>
+          <button class="buttonnav notification-button" id="notificationButton" type="button" aria-label="Notifications"
+            aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell"
+              viewBox="0 0 16 16">
+              <path
+                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
+            </svg>
+          </button>
+          <div class="notification-panel" id="notificationPanel" role="status" hidden>
+            <strong data-i18n="notifications">Notifications</strong>
+            <p data-i18n="noNotifications">You have no new notifications.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom_mainnav">
+        <div class="left_mainnav">
+          <a href="#home">
+            <img src="logo/PCBuilder_logo_square.svg" alt="PCBuilder_logo_square"
+              style="width: 50px; filter: drop-shadow(0px 0px 10px white);">
+          </a>
+        </div>
+        <div class="right_mainnav">
+          <div class="search-bar">
+
+            <div class="filter-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-funnel"
+                viewBox="0 0 16 16">
+                <path
+                  d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2z" />
+              </svg>
+            </div>
+            <p class="search_p">Search:</p>
+            <div class="divider"></div>
+
+            <input class="search-input" id="navbarSearchInput" type="search" placeholder="Enter your search here"
+              aria-label="Search products" data-i18n-placeholder="searchProducts">
+
+          </div>
+          <a href="cart.html" class="buttonnav store-cart-home" aria-label="Shopping cart">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart"
+              viewBox="0 0 16 16">
+              <path
+                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+            </svg>
+            <span id="cartCount">0</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </nav>
+
+  <div class="emptyspace" style="width: 100%; height: 5vw;">
+
+  </div>
+  <div class="about-page">
+    <section class="about-hero">
+      <p class="about-eyebrow about-title-eyebrow">ABOUT PCBUILDERS</p>
+
+      <h1 class="about-title">
+        <span class="title-solid">BUILD YOUR</span>
+        <span class="title-outline">DREAMS</span>
+      </h1>
+
+      <div class="about-hero-body">
+        <div class="about-intro">
+          <p class="about-eyebrow" data-i18n="whoWeAre">WHO WE ARE</p>
+
+          <p class="about-lead">
+            PCBuilders is your go-to destination for exploring PC parts and finding
+            the right components for your setup. Whether you are planning your first
+            PC or upgrading an existing build, we aim to make the process easier to
+            understand, compare, and enjoy.
+          </p>
+
+          <div class="about-cta">
+            <a href="discover.html">Explore PC Parts</a>
+            <a href="index.html#contact">Contact Us</a>
+          </div>
+        </div>
+
+        <img class="about-hero-image" src="images/full_pc_setup.png"
+          alt="A collection of custom PC builds and gaming setups">
+      </div>
+    </section>
+
+    <section class="about-content" aria-label="About PCBuilders">
+      <article class="about-card">
+        <h2>What We Do</h2>
+        <p>
+          We bring PC-related products together in one catalog so customers can
+          compare options and learn more about the components they are interested
+          in. Our goal is to make finding parts easier to follow.
+        </p>
+      </article>
+
+      <article class="about-card">
+        <h2>Our Approach</h2>
+        <p>
+          A good PC starts with choosing components that suit your needs. We focus
+          on clear product information, organized categories, and a shopping
+          experience that works across desktop, tablet, and mobile screens.
+        </p>
+      </article>
+    </section>
+
+    <section class="about-values">
+      <h2>Quality, Clarity, and Customer Support</h2>
+      <p>
+        We believe customers should be able to browse products with confidence.
+        PCBuilders is designed around accessible information, a straightforward
+        catalog, and support when questions come up. As the project grows, these
+        principles will continue to guide the experience.
+      </p>
+    </section>
+
+    <!-- WHY CHOOSE US SECTION -->
+    <section class="why-choose-section" id="why-choose-us">
+
+      <h2 class="why-heading">
+        <span class="why-solid">WHY</span>
+        <span class="why-outline">CHOOSE</span>
+        <span class="why-solid">US?</span>
+      </h2>
+
+      <p class="why-intro">
+        At <strong>PCBUILDER</strong>, we make it easy to find and build the
+        right PC for your needs and budget. We focus on quality components,
+        reliable performance, and personalized builds so every customer gets
+        a setup they can be proud of.
+      </p>
+
+      <div class="why-cards">
+
+        <!-- Card 1: Quality Components -->
+        <article class="why-card">
+          <h3>Quality Components</h3>
+
+          <div class="why-icon">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <path d="M13 52 L38 77 L88 18 L80 12 L37 61 L21 43 Z" />
+            </svg>
+          </div>
+
+          <p>
+            We choose reliable, high-performance parts designed to deliver
+            great results.
+          </p>
+        </article>
+
+        <!-- Card 2: Built for Your Needs -->
+        <article class="why-card">
+          <h3>Built for Your Needs</h3>
+
+          <div class="why-icon">
+            <img src="svg/speed_meter.svg" alt="speed_meter" style="width: 80px;">
+          </div>
+
+          <p>
+            Get the performance you need without spending more than necessary.
+          </p>
+        </article>
+
+        <!-- Card 3: Budget-Friendly Options -->
+        <article class="why-card">
+          <h3>Budget-Friendly Options</h3>
+
+          <div class="why-icon">
+            <img src="svg/hammer_n_wrench.svg" alt="hammer_n_wrench" style="width: 80px;">
+          </div>
+
+          <p>
+            Choose the parts and specifications that match your style,
+            performance goals, and budget.
+          </p>
+        </article>
+
+        <!-- Card 4: Customer-Focused -->
+        <article class="why-card">
+          <h3>Customer-Focused</h3>
+
+          <div class="why-icon">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <path d="M50 88 L13 52 C-5 31 10 8 30 12 C41 13 47 21 50 29 C53 21 61 13 72 12 C92 8 107 31 87 52 Z" />
+            </svg>
+          </div>
+
+          <p>
+            We're here to make PC building simple, straightforward, and
+            stress-free.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- PROVEN AND TRUSTED SECTION -->
+    <section class="proventrusted" id="proven-trusted">
+
+      <div class="proventrusted-content">
+        <p class="big_proventrusted">PROVEN AND</p>
+        <p class="big_proventrusted_Outlined">TRUSTED</p>
+
+        <p class="proventrusted-copy">
+          We build trust through quality, transparency, and reliable service.
+          Every PC build is carefully selected with compatible, genuine
+          components, helping customers get dependable performance and peace
+          of mind. Component authenticity and traceability are important
+          foundations of trust in computing hardware.
+        </p>
+
+        <div class="trust-stat">
+          <span class="trust-stat-icon">♟</span>
+          <div>
+            <strong>1,000+</strong>
+            <span>Monthly Users</span>
+            <small>People discovering PCBUILDER every month.</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="ratings-columns">
+
+        <!-- First column: scrolls upward -->
+        <div class="infinite_scrolling_ratings" aria-label="Customer reviews">
+          <div class="ratings_track">
+            <div class="ratings_group">
+
+              <article class="user_rating" data-no-translate>
+                <div class="user_rating_img">
+                  <img src="images/user_ratings_img/492880616_4851687358390043_9077766498782636244_n.jpg" alt="">
+                </div>
+                <div class="rating_description">
+                  <p class="rating_username">D*** Z***</p>
+                  <p class="rating_comment">“They ship the pc parts so quick!”</p>
+                </div>
+              </article>
+
+              <article class="user_rating" data-no-translate>
+                <div class="user_rating_img">
+                  <img src="images/user_ratings_img/guide.png" alt="">
+                </div>
+                <div class="rating_description">
+                  <p class="rating_username">P*** D***</p>
+                  <p class="rating_comment">“Grabe padiscount nila OMG”</p>
+                </div>
+              </article>
+
+              <article class="user_rating" data-no-translate>
+                <div class="user_rating_img">
+                  <img src="images/user_ratings_img/guide (1).png" alt="">
+                </div>
+                <div class="rating_description">
+                  <p class="rating_username">R*** M***</p>
+                  <p class="rating_comment">“I rlly reco this website :)”</p>
+                </div>
+              </article>
+
+              <article class="user_rating" data-no-translate>
+                <div class="user_rating_img">
+                  <img src="images/user_ratings_img/guide (2).png" alt="">
+                </div>
+                <div class="rating_description">
+                  <p class="rating_username">E*** B***</p>
+                  <p class="rating_comment">“THIS WEBSITE IS SOOO GENEROUSSSS”</p>
+                </div>
+              </article>
+
+              <article class="user_rating" data-no-translate>
+                <div class="user_rating_img">
+                  <img src="images/user_ratings_img/guide (3).png" alt="">
+                </div>
+                <div class="rating_description">
+                  <p class="rating_username">C*** R***</p>
+                  <p class="rating_comment">“pwede na panggaming”</p>
+                </div>
+              </article>
+
+              <article class="user_rating" data-no-translate>
+                <div class="user_rating_img">
+                  <img src="images/user_ratings_img/jd_guide.png" alt="">
+                </div>
+                <div class="rating_description">
+                  <p class="rating_username">J*** D***</p>
+                  <p class="rating_comment">“I’ve been purchasing pc parts here since 2024, They never disappoint...”
+                  </p>
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Second column: scrolls downward -->
+        <div class="infinite_scrolling_ratings scroll-reverse" aria-label="More customer reviews">
+          <div class="ratings_track">
+            <div class="ratings_group">
+
+              <article class="user_rating" data-no-translate>
+                <div class="user_rating_img">
+                  <img src="images/user_ratings_img/guide (2).png" alt="">
+                </div>
+                <div class="rating_description">
+                  <p class="rating_username">E*** B***</p>
+                  <p class="rating_comment">“THIS WEBSITE IS SOOO GENEROUSSSS”</p>
+                </div>
+              </article>
+
+              <article class="user_rating" data-no-translate>
+                <div class="user_rating_img">
+                  <img src="images/user_ratings_img/jd_guide.png" alt="">
+                </div>
+                <div class="rating_description">
+                  <p class="rating_username">J*** D***</p>
+                  <p class="rating_comment">“I’ve been purchasing pc parts here since 2024, They never disappoint...”
+                  </p>
+                </div>
+              </article>
+
+              <article class="user_rating" data-no-translate>
+                <div class="user_rating_img">
+                  <img src="images/user_ratings_img/492880616_4851687358390043_9077766498782636244_n.jpg" alt="">
+                </div>
+                <div class="rating_description">
+                  <p class="rating_username">D*** Z***</p>
+                  <p class="rating_comment">“They ship the pc parts so quick!”</p>
+                </div>
+              </article>
+
+              <article class="user_rating" data-no-translate>
+                <div class="user_rating_img">
+                  <img src="images/user_ratings_img/guide.png" alt="">
+                </div>
+                <div class="rating_description">
+                  <p class="rating_username">P*** D***</p>
+                  <p class="rating_comment">“Grabe padiscount nila OMG”</p>
+                </div>
+              </article>
+
+              <article class="user_rating" data-no-translate>
+                <div class="user_rating_img">
+                  <img src="images/user_ratings_img/guide (1).png" alt="">
+                </div>
+                <div class="rating_description">
+                  <p class="rating_username">R*** M***</p>
+                  <p class="rating_comment">“I rlly reco this website :)”</p>
+                </div>
+              </article>
+
+              <article class="user_rating" data-no-translate>
+                <div class="user_rating_img">
+                  <img src="images/user_ratings_img/guide (3).png" alt="">
+                </div>
+                <div class="rating_description">
+                  <p class="rating_username">C*** R***</p>
+                  <p class="rating_comment">“pwede na panggaming”</p>
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="contact">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="footer-logo" href="index.html#home">LOGO</a>
+        <span>PCBuilders - Build Your Dreams.</span>
+      </div>
+
+      <div class="footer-columns">
+        <section class="footer-column footer-quick-links">
+          <h2>Quick links</h2>
+          <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="about.html" aria-current="page">About Us</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+            <li><a href="discover.html">PC Parts</a></li>
+            <li><a href="index.html#pcbuilder">PC Builder</a></li>
+          </ul>
+        </section>
+
+        <section class="footer-column footer-contact-details">
+          <h2>Contact Us</h2>
+          <p>
+            <span class="footer-contact-icon">●</span>
+            Quezon City, Philippines
+          </p>
+          <p>
+            <span class="footer-contact-icon">✉</span>
+            <a href="mailto:pcbuilder@gmail.com">pcbuilder@gmail.com</a>
+          </p>
+          <p>
+            <span class="footer-contact-icon">☎</span>
+            <a href="tel:+63123456789">(+63)12 345 6789</a>
+          </p>
+        </section>
+
+        <section class="footer-column">
+          <h2>Get in touch</h2>
+
+          <form class="footer-contact-form" id="aboutContactForm">
+            <input type="email" name="email" placeholder="Your email address" aria-label="Your email address" required>
+
+            <textarea name="message" rows="3" placeholder="Your message" aria-label="Your message" required></textarea>
+
+            <button type="submit">SUBMIT</button>
+          </form>
+        </section>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 PCBuilders. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Redirect navbar searches to the Discover page.
+    document.getElementById("navbarSearchForm")?.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const query = this.elements.q.value.trim();
+
+      window.location.href =
+        "discover.html" +
+        (query ? "?q=" + encodeURIComponent(query) : "");
+    });
+
+    // Open an email draft when the contact form is submitted.
+    document.getElementById("aboutContactForm")?.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const email = this.elements.email.value.trim();
+      const message = this.elements.message.value.trim();
+
+      const subject = encodeURIComponent("PCBuilders website inquiry");
+      const body = encodeURIComponent(
+        "From: " + email + "\n\n" + message
+      );
+
+      window.location.href =
+        "mailto:pcbuilder@gmail.com?subject=" + subject + "&body=" + body;
+    });
+  </script>
+
+  <script type="module" src="cart-count.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

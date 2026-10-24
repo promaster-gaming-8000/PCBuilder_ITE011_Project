@@ -242,16 +242,16 @@ main {
 
 .image-layout {
     position: relative;
-    width: 500px;
-    height: 650px;
+    width: 34%;
+    height: 45vw;
 }
 
 .photo {
     position: absolute;
     overflow: hidden;
 
-    width: 270px;
-    height: 320px;
+    width: 54%;
+    height: 49.23%;
 
     clip-path: polygon(25% 0%,
             100% 0%,
@@ -270,29 +270,31 @@ main {
 /* TOP LEFT */
 .photo-1 {
     top: 0;
-    left: 10px;
+    left: 2%;
 }
 
 
 /* TOP RIGHT */
 .photo-2 {
-    top: 150px;
-    left: 190px;
+    top: 23%;
+    left: 38%;
 }
 
 
 /* BOTTOM LEFT */
 .photo-3 {
-    top: 335px;
-    left: -62px;
+    top: 50.5%;
+    left: -12%;
 }
 
 
 /* BOTTOM RIGHT */
 .photo-4 {
-    top: 480px;
-    left: 121px;
+    top: 73.5%;
+    left: 24%;
 }
+
+
 
 .limitedtime_item_container {
     display: flex;

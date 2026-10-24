@@ -1,3 +1,28 @@
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f900;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e100;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b800;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f900;
+}
+
 .smoke_background {
     position: fixed;
     inset: 0;

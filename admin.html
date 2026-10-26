@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Manager | PCBuilders</title>
+  <link rel="shortcut icon" href="logo/NEW_PCBuilder_Logo_WHITE-TEXT.png">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="ui.css">
   <link rel="stylesheet" href="storefront.css">
@@ -13,68 +14,111 @@
 <body class="store-page">
   <canvas class="smoke_background" aria-hidden="true"></canvas>
   <header class="store-header">
-    <a class="store-logo" href="index.html" aria-label="PCBuilders home"><img src="logo/PCBuilder_logo_square.svg"
-        alt="PCBuilders logo"></a>
+    <a class="store-logo" href="index.html" aria-label="PCBuilders home"><img
+        src="logo/NEW_PCBuilder_Logo_WHITE-TEXT.png" alt="NEW_PCBuilder_Logo_WHITE-TEXT"></a>
     <nav class="store-nav" aria-label="Main navigation"><a href="index.html">Home</a><a
         href="discover.html">Discover</a></nav>
     <a class="store-cart-link" href="cart.html">View Cart</a>
   </header>
-    <h1 class="page-title">PRODUCT MANAGER</h1>
-    <p class="admin-warning">Only a Supabase user ID explicitly added to <code>public.admin_users</code> can manage
-      products or upload images.</p>
-    <section class="admin-panel" id="loginPanel">
-      <h2>Admin Sign In</h2>
-      <form id="adminLoginForm" class="admin-form">
-        <label>Email<input id="adminEmail" type="email" required autocomplete="username"></label>
-        <label>Password<input id="adminPassword" type="password" required autocomplete="current-password"></label>
-        <button class="store-button store-button-primary" type="submit">Sign In</button>
+  <h1 class="page-title">PRODUCT MANAGER</h1>
+  <p class="admin-warning">Only a Supabase user ID explicitly added to <code>public.admin_users</code> can manage
+    products or upload images.</p>
+  <section class="admin-panel" id="loginPanel">
+    <h2>Admin Sign In</h2>
+    <form id="adminLoginForm" class="admin-form">
+      <label>Email<input id="adminEmail" type="email" required autocomplete="username"></label>
+      <label>Password<input id="adminPassword" type="password" required autocomplete="current-password"></label>
+      <button class="store-button store-button-primary" type="submit">Sign In</button>
+    </form>
+    <p class="store-message" id="adminLoginStatus" role="status"></p>
+    <p class="form-help">Create the admin user in Supabase Dashboard → Authentication → Users. Then add that user's
+      UUID to <code>public.admin_users</code> using the SQL in the README. This page has no public sign-up form.</p>
+  </section>
+  <section id="adminDashboard" hidden>
+    <div class="admin-toolbar">
+      <p>Signed in as <strong id="signedInEmail"></strong></p><button class="store-button store-button-secondary"
+        id="adminSignOut" type="button">Sign Out</button>
+    </div>
+    <section class="admin-panel">
+      <h2 id="productFormTitle">Add a Product</h2>
+      <form id="productForm" class="admin-form admin-product-form">
+        <input id="editingProductId" type="hidden">
+        <label>Product name<input id="adminProductName" type="text" maxlength="160" required></label>
+        <div class="form-two-columns"><label>Price (PHP)<input id="adminProductPrice" type="number" min="0" step="0.01"
+              required></label><label>Stock quantity<input id="adminProductStock" type="number" min="0" step="1"
+              required value="1"></label></div>
+        <label>Category<input id="adminProductCategory" type="text" maxlength="80" placeholder="e.g. Graphics Card"
+            required></label>
+        <label>Product image<input id="adminProductImage" type="file"
+            accept="image/png,image/jpeg,image/webp,image/gif"></label>
+        <p class="form-help" id="imageHelp">Choose an image to upload it directly to the Supabase Storage bucket named
+          product-images. Keep product images compressed when possible to save free storage and bandwidth.</p>
+        <label>Description<textarea id="adminProductDescription" rows="5" maxlength="5000" required></textarea></label>
+        <label>Specifications (one per line, like <code>Memory: 8 GB</code>)<textarea id="adminProductSpecifications"
+            rows="5" placeholder="Memory: 8 GB&#10;Interface: PCIe 3.0"></textarea></label>
+        <label>Deal badge (optional)<input id="adminProductDealLabel" type="text" maxlength="32"
+            placeholder="e.g. 20% OFF"></label>
+        <label class="checkbox-label"><input id="adminProductTopItem" type="checkbox"> Show in the homepage Top Items
+          section</label>
+        <label class="checkbox-label"><input id="adminProductActive" type="checkbox" checked> Visible in the
+          shop</label>
+        <div class="admin-form-actions"><button class="store-button store-button-primary" id="saveProductButton"
+            type="submit">Add Product</button><button class="store-button store-button-secondary" id="cancelEditButton"
+            type="button" hidden>Cancel Edit</button></div>
+        <p class="store-message" id="productSaveStatus" role="status"></p>
       </form>
-      <p class="store-message" id="adminLoginStatus" role="status"></p>
-      <p class="form-help">Create the admin user in Supabase Dashboard → Authentication → Users. Then add that user's
-        UUID to <code>public.admin_users</code> using the SQL in the README. This page has no public sign-up form.</p>
     </section>
-    <section id="adminDashboard" hidden>
-      <div class="admin-toolbar">
-        <p>Signed in as <strong id="signedInEmail"></strong></p><button class="store-button store-button-secondary"
-          id="adminSignOut" type="button">Sign Out</button>
+    <section class="admin-panel admin-list-panel">
+      <h2>Existing Products</h2>
+      <p class="form-help">Editing a product updates its details and image. Deleting a product also attempts to remove
+        its uploaded image from Supabase Storage.</p>
+      <div id="adminProductList" class="admin-product-list"></div>
+    </section>
+  </section>
+  <footer class="site-footer" id="contact">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#home" aria-label="PCBuilders home" class="footer-logo">
+          <img src="logo/NEW_PCBuilder_Logo_WHITE-TEXT.png" alt="NEW_PCBuilder_Logo_WHITE-TEXT">
+        </a>
+        <span>PCBuilders - Build Your Dreams.</span>
       </div>
-      <section class="admin-panel">
-        <h2 id="productFormTitle">Add a Product</h2>
-        <form id="productForm" class="admin-form admin-product-form">
-          <input id="editingProductId" type="hidden">
-          <label>Product name<input id="adminProductName" type="text" maxlength="160" required></label>
-          <div class="form-two-columns"><label>Price (PHP)<input id="adminProductPrice" type="number" min="0"
-                step="0.01" required></label><label>Stock quantity<input id="adminProductStock" type="number" min="0"
-                step="1" required value="1"></label></div>
-          <label>Category<input id="adminProductCategory" type="text" maxlength="80" placeholder="e.g. Graphics Card"
-              required></label>
-          <label>Product image<input id="adminProductImage" type="file"
-              accept="image/png,image/jpeg,image/webp,image/gif"></label>
-          <p class="form-help" id="imageHelp">Choose an image to upload it directly to the Supabase Storage bucket named
-            product-images. Keep product images compressed when possible to save free storage and bandwidth.</p>
-          <label>Description<textarea id="adminProductDescription" rows="5" maxlength="5000"
-              required></textarea></label>
-          <label>Specifications (one per line, like <code>Memory: 8 GB</code>)<textarea id="adminProductSpecifications"
-              rows="5" placeholder="Memory: 8 GB&#10;Interface: PCIe 3.0"></textarea></label>
-          <label>Deal badge (optional)<input id="adminProductDealLabel" type="text" maxlength="32"
-              placeholder="e.g. 20% OFF"></label>
-          <label class="checkbox-label"><input id="adminProductTopItem" type="checkbox"> Show in the homepage Top Items
-            section</label>
-          <label class="checkbox-label"><input id="adminProductActive" type="checkbox" checked> Visible in the
-            shop</label>
-          <div class="admin-form-actions"><button class="store-button store-button-primary" id="saveProductButton"
-              type="submit">Add Product</button><button class="store-button store-button-secondary"
-              id="cancelEditButton" type="button" hidden>Cancel Edit</button></div>
-          <p class="store-message" id="productSaveStatus" role="status"></p>
-        </form>
-      </section>
-      <section class="admin-panel admin-list-panel">
-        <h2>Existing Products</h2>
-        <p class="form-help">Editing a product updates its details and image. Deleting a product also attempts to remove
-          its uploaded image from Supabase Storage.</p>
-        <div id="adminProductList" class="admin-product-list"></div>
-      </section>
-    </section>
+      <div class="footer-columns">
+        <div class="footer-column footer-quick-links">
+          <h2 data-i18n="quickLinks">Quick links</h2>
+          <ul>
+            <li><a href="#home" data-i18n="home">Home</a></li>
+            <li><a href="about.html" data-i18n="about">About Us</a></li>
+            <li><a href="about.html#contact" data-i18n="contact">Contact Us</a></li>
+            <li><a href="discover.html" data-i18n="pcParts">PC Parts</a></li>
+          </ul>
+        </div>
+        <div class="footer-column footer-contact-details">
+          <h2 data-i18n="contactUsHeading">Contact Us</h2>
+          <p><span class="footer-contact-icon" aria-hidden="true">●</span> Quezon City, Philippines</p>
+          <p><span class="footer-contact-icon" aria-hidden="true">✉</span> <a
+              href="mailto:pcbuilder@gmail.com">pcbuilder@gmail.com</a></p>
+          <p><span class="footer-contact-icon" aria-hidden="true">♧</span> <a href="tel:+632123456789">(+63)12 345
+              6789</a></p>
+        </div>
+        <div class="footer-column footer-message-column">
+          <h2 data-i18n="getInTouch">Get in touch</h2>
+          <form id="footerContactForm" class="footer-contact-form">
+            <label class="sr-only" for="footerEmail" data-i18n="yourEmail">Your email address</label>
+            <input id="footerEmail" name="email" type="email" placeholder="Your email address" required
+              data-i18n-placeholder="yourEmail">
+            <label class="sr-only" for="footerMessage" data-i18n="yourMessage">Your message</label>
+            <textarea id="footerMessage" name="message" rows="3" aria-label="Your message" required></textarea>
+            <button type="submit" data-i18n="submit">SUBMIT</button>
+            <p id="footerFormStatus" class="footer-form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 PCBuilders. <span data-i18n="allRightsReserved">All Rights Reserved.</span></p>
+      </div>
+    </div>
+  </footer>
   <script type="module" src="admin.js"></script>
 </body>
 

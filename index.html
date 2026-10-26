@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="ui.css">
   <link rel="stylesheet" href="storefront.css">
+  <link rel="shortcut icon" href="logo/NEW_PCBuilder_Logo_WHITE-TEXT.png">
 </head>
 
 <body>
@@ -25,9 +26,8 @@
         <div class="left_mainnav">
           <a href="#home" data-i18n="home">Home</a>
           <a href="about.html" data-i18n="about">About Us</a>
-          <a href="#contact" data-i18n="contact">Contact Us</a>
+          <a href="about.html#contact" data-i18n="contact">Contact Us</a>
           <a class="buttonnav" id="pcparts" href="discover.html" data-i18n="pcParts">PC Parts</a>
-          <a href="#pcbuilder" class="pcbuilder-coming-soon" data-i18n="pcBuilder">PC Builder</a>
         </div>
         <div class="right_mainnav">
           <button class="buttonnav help-button" type="button" aria-label="Help page" title="Help"
@@ -72,7 +72,7 @@
       <div class="bottom_mainnav">
         <div class="left_mainnav">
           <a href="#home">
-            <img src="logo/PCBuilder_logo_square.svg" alt="PCBuilder_logo_square"
+            <img src="logo/NEW_PCBuilder_Logo_WHITE-TEXT.png" alt="PCBuilder_logo_square"
               style="width: 50px; filter: drop-shadow(0px 0px 10px white);">
           </a>
         </div>
@@ -112,22 +112,22 @@
         with us in PCBuilders.
       </p>
       <div class="main_ui_buttons">
-        <button class="white_outlined_button" data-i18n="buyNow">BUY NOW</button>
-        <a class="red_button">
+        <a href="discover.html" class="white_outlined_button" data-i18n="buyNow">BUY NOW</a>
+        <a href="discover.html" class="red_button">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" class="bi bi-mouse2-fill"
             viewBox="0 0 16 16">
             <path
               d="M7.5.026C4.958.286 3 2.515 3 5.188V5.5h4.5zm1 0V5.5H13v-.312C13 2.515 11.042.286 8.5.026M13 6.5H3v4.313C3 13.658 5.22 16 8 16s5-2.342 5-5.188z" />
           </svg>
         </a>
-        <a class="green_button">
+        <a href="discover.html" class="green_button">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" class="bi bi-display"
             viewBox="0 0 16 16">
             <path
               d="M0 4s0-2 2-2h12s2 0 2 2v6s0 2-2 2h-4q0 1 .25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75Q6 13 6 12H2s-2 0-2-2zm1.398-.855a.76.76 0 0 0-.254.302A1.5 1.5 0 0 0 1 4.01V10c0 .325.078.502.145.602q.105.156.302.254a1.5 1.5 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.76.76 0 0 0 .254-.302 1.5 1.5 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.76.76 0 0 0-.302-.254A1.5 1.5 0 0 0 13.99 3H2c-.325 0-.502.078-.602.145" />
           </svg>
         </a>
-        <a class="blue_button">
+        <a href="discover.html" class="blue_button">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" class="bi bi-gpu-card"
             viewBox="0 0 16 16">
             <path d="M4 8a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0m7.5-1.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3" />
@@ -223,7 +223,7 @@
     </div>
     <p style="margin: 20px;"><span data-i18n="shopDescription">Buy PC Parts or Complete PC builds here in our large
         catalog of PC Related items</span></p>
-    <button class="white_outlined_button" style="font-size: 25px; margin: 20px;" data-i18n="buyNow">BUY NOW</button>
+    <a href="discover.html" class="white_outlined_button" style="font-size: 25px; margin: 20px; width: fit-content;" data-i18n="buyNow">BUY NOW</a>
   </section>
   <section class="proventrusted">
     <p class="big_proventrusted" data-i18n="provenHeading">PROVEN AND</p>
@@ -392,14 +392,16 @@
     <section class="discover-grid" id="discoverGrid" aria-label="Discover PC parts and accessories"></section>
 
     <p class="no-results" id="noResults">No products found. Try another search.</p>
-    <div class="show-more-wrap"><button type="button" id="showMoreProducts" class="show-more-button" hidden>Show
-        More</button></div>
+    <div class="show-more-wrap"><a href="discover.html" type="button" id="showMoreProducts" class="show-more-button" hidden>Show
+        More</a></div>
   </section>
 
   <footer class="site-footer" id="contact">
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="#home" aria-label="PCBuilders home" class="footer-logo">LOGO</a>
+        <a href="#home" aria-label="PCBuilders home" class="footer-logo">
+          <img src="logo/NEW_PCBuilder_Logo_WHITE-TEXT.png" alt="NEW_PCBuilder_Logo_WHITE-TEXT">
+        </a>
         <span>PCBuilders - Build Your Dreams.</span>
       </div>
       <div class="footer-columns">
@@ -408,9 +410,8 @@
           <ul>
             <li><a href="#home" data-i18n="home">Home</a></li>
             <li><a href="about.html" data-i18n="about">About Us</a></li>
-            <li><a href="#contact" data-i18n="contact">Contact Us</a></li>
+            <li><a href="about.html#contact" data-i18n="contact">Contact Us</a></li>
             <li><a href="discover.html" data-i18n="pcParts">PC Parts</a></li>
-            <li><a href="#pcbuilder" class="pcbuilder-coming-soon" data-i18n="pcBuilder">PC Builder</a></li>
           </ul>
         </div>
         <div class="footer-column footer-contact-details">

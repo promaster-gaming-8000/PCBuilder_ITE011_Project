@@ -1,11 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Account | PCBuilders</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="ui.css"><link rel="stylesheet" href="storefront.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account | PCBuilders</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="storefront.css">
+  <link rel="shortcut icon" href="logo/NEW_PCBuilder_Logo_WHITE-TEXT.png">
 </head>
+
 <body class="store-page">
-  <header class="store-header"><a class="store-logo" href="index.html#home"><img src="logo/PCBuilder_logo_square.svg" alt="PCBuilders logo"></a><nav class="store-nav"><a href="index.html#home">Home</a><a href="discover.html">PC Parts</a><a href="help.html">Help</a></nav><a class="store-cart-link" href="cart.html">Cart <span id="cartCount">0</span></a></header>
-  <main class="simple-info-page"><p class="about-eyebrow">PCBUILDERS ACCOUNT</p><h1>Sign up or log in</h1><p>Account registration and login are not connected to an authentication service yet.</p><div class="info-card"><h2>Coming soon</h2><p>This page is a working destination for the navigation link. To enable real accounts, an authentication provider and account workflow still need to be configured.</p></div><a class="about-parts-link" href="discover.html">Continue shopping</a></main>
+  <header class="store-header"><a class="store-logo" href="index.html#home"><img
+        src="logo/NEW_PCBuilder_Logo_WHITE-TEXT.png" alt="NEW_PCBuilder_Logo_WHITE-TEXT"></a>
+    <nav class="store-nav"><a href="index.html#home">Home</a><a href="discover.html">PC Parts</a><a
+        href="help.html">Help</a></nav><a class="store-cart-link" href="cart.html">Cart <span
+        id="cartCount">0</span></a>
+  </header>
+  <main class="simple-info-page">
+    <p class="about-eyebrow">PCBUILDERS ACCOUNT</p>
+    <h1>Sign up or log in</h1>
+    <p>Account registration and login are not connected to an authentication service yet.</p>
+    <div class="info-card">
+      <h2>Coming soon</h2>
+      <p>This page is a working destination for the navigation link. To enable real accounts, an authentication provider
+        and account workflow still need to be configured.</p>
+    </div><a class="about-parts-link" href="discover.html">Continue shopping</a>
+  </main>
+  <footer class="site-footer" id="contact">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#home" aria-label="PCBuilders home" class="footer-logo">
+          <img src="logo/NEW_PCBuilder_Logo_WHITE-TEXT.png" alt="NEW_PCBuilder_Logo_WHITE-TEXT">
+        </a>
+        <span>PCBuilders - Build Your Dreams.</span>
+      </div>
+      <div class="footer-columns">
+        <div class="footer-column footer-quick-links">
+          <h2 data-i18n="quickLinks">Quick links</h2>
+          <ul>
+            <li><a href="#home" data-i18n="home">Home</a></li>
+            <li><a href="about.html" data-i18n="about">About Us</a></li>
+            <li><a href="about.html#contact" data-i18n="contact">Contact Us</a></li>
+            <li><a href="discover.html" data-i18n="pcParts">PC Parts</a></li>
+          </ul>
+        </div>
+        <div class="footer-column footer-contact-details">
+          <h2 data-i18n="contactUsHeading">Contact Us</h2>
+          <p><span class="footer-contact-icon" aria-hidden="true">●</span> Quezon City, Philippines</p>
+          <p><span class="footer-contact-icon" aria-hidden="true">✉</span> <a
+              href="mailto:pcbuilder@gmail.com">pcbuilder@gmail.com</a></p>
+          <p><span class="footer-contact-icon" aria-hidden="true">♧</span> <a href="tel:+632123456789">(+63)12 345
+              6789</a></p>
+        </div>
+        <div class="footer-column footer-message-column">
+          <h2 data-i18n="getInTouch">Get in touch</h2>
+          <form id="footerContactForm" class="footer-contact-form">
+            <label class="sr-only" for="footerEmail" data-i18n="yourEmail">Your email address</label>
+            <input id="footerEmail" name="email" type="email" placeholder="Your email address" required
+              data-i18n-placeholder="yourEmail">
+            <label class="sr-only" for="footerMessage" data-i18n="yourMessage">Your message</label>
+            <textarea id="footerMessage" name="message" rows="3" aria-label="Your message" required></textarea>
+            <button type="submit" data-i18n="submit">SUBMIT</button>
+            <p id="footerFormStatus" class="footer-form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 PCBuilders. <span data-i18n="allRightsReserved">All Rights Reserved.</span></p>
+      </div>
+    </div>
+  </footer>
   <script type="module" src="cart-count.js"></script>
-</body></html>
+</body>
+
+</html>

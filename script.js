@@ -1,9 +1,22 @@
-// Announcement-bar marquee from the original PCBuilders website.
+// Announcement-bar marquee with English and Filipino copy.
 const announcement = document.getElementById("announcement");
 if (announcement) {
-  const text = "50% OFF FOR FIRST TIME CUSTOMERS";
-  announcement.textContent = Array(20).fill(text).join("　");
+  const announcementText = {
+    en: "50% OFF FOR FIRST TIME CUSTOMERS",
+    fil: "50% DISKUWENTO PARA SA MGA BAGONG CUSTOMER"
+  };
   let position = 0;
+  function setAnnouncementLanguage(language) {
+    const lang = language === "fil" ? "fil" : "en";
+    announcement.textContent = Array(20).fill(announcementText[lang]).join("　");
+    position = 0;
+    announcement.style.transform = "translateX(0)";
+  }
+  try { setAnnouncementLanguage(localStorage.getItem("pcbuilders_language") || "en"); }
+  catch (_) { setAnnouncementLanguage("en"); }
+  window.addEventListener("pcbuilders:languagechange", event => {
+    setAnnouncementLanguage(event.detail?.language);
+  });
   function scrollText() {
     position -= 1;
     if (position <= -announcement.scrollWidth / 2) position = 0;

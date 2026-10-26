@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Learn more about PCBuilders and our approach to PC parts and custom builds.">
-  <title>About Us | PCBuilders</title>
+  <meta name="description" content="Learn more about PCBuilders and our approach to PC parts and custom builds." data-i18n-content="metaDescription">
+  <title data-i18n="documentTitle">About Us | PCBuilders</title>
+  <link rel="shortcut icon" href="logo/NEW_PCBuilder_Logo_WHITE-TEXT.png">
 
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="ui.css">
@@ -876,6 +877,135 @@
         transition: none;
       }
     }
+
+    /* PCBuilders Team Section */
+    .team-section {
+      width: min(1180px, 100%);
+      margin: 64px auto 0;
+    }
+
+    .team-heading {
+      margin: 0 0 12px;
+      font-family: Horizon, Impact, sans-serif;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 1.1;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .team-subheading {
+      max-width: 720px;
+      margin: 0 auto 34px;
+      color: rgba(255, 255, 255, 0.76);
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .team-list {
+      display: grid;
+      gap: 24px;
+    }
+
+    .team-member {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 0.8fr);
+      align-items: center;
+      gap: clamp(22px, 4vw, 52px);
+      padding: clamp(20px, 3vw, 34px);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 12px;
+      background: linear-gradient(120deg,
+          rgba(23, 13, 48, 0.92),
+          rgba(10, 7, 22, 0.82));
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.16);
+    }
+
+    /* Alternate image and description positions */
+    .team-member:nth-child(even) .team-member-copy {
+      order: 2;
+    }
+
+    .team-member:nth-child(even) .team-member-photo {
+      order: 1;
+    }
+
+    .team-member-copy {
+      min-width: 0;
+    }
+
+    .team-number {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: #1cb78d;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .team-member h3 {
+      margin: 0 0 8px;
+      color: #fff;
+      font-size: clamp(22px, 2.5vw, 30px);
+      line-height: 1.3;
+    }
+
+    .team-role {
+      margin: 0 0 14px;
+      color: #b58aff;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .team-description {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.8;
+    }
+
+    .team-member-photo {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      min-height: 210px;
+      border: 1px solid rgba(154, 91, 255, 0.4);
+      border-radius: 9px;
+      background: radial-gradient(circle at top right,
+          rgba(140, 82, 255, 0.22),
+          rgba(255, 255, 255, 0.035) 60%);
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 650px) {
+      .team-section {
+        margin-top: 44px;
+      }
+
+      .team-subheading {
+        margin-bottom: 24px;
+        font-size: 15px;
+      }
+
+      .team-member {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      /* Keep the same image-first layout on mobile */
+      .team-member:nth-child(even) .team-member-copy,
+      .team-member:nth-child(even) .team-member-photo {
+        order: initial;
+      }
+
+      .team-member-photo {
+        min-height: 190px;
+        max-height: 300px;
+      }
+    }
   </style>
 </head>
 
@@ -895,11 +1025,10 @@
           <a href="index.html#home" data-i18n="home">Home</a>
           <a href="about.html" data-i18n="about">About Us</a>
           <a href="index.html#contact" data-i18n="contact">Contact Us</a>
-          <a href="discover.html" data-i18n="parts">PC Parts</a>
-          <a href="index.html#pcbuilder" data-i18n="builder">PC Builder</a>
+          <a href="discover.html" data-i18n="pcParts">PC Parts</a>
         </div>
         <div class="right_mainnav">
-          <button class="buttonnav help-button" type="button" aria-label="Help page" title="Help"
+          <button class="buttonnav help-button" type="button" aria-label="Help page" title="Help" data-i18n-aria-label="help" data-i18n-title="help"
             onclick="window.location.href='help.html'">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
               class="bi bi-question-circle" viewBox="0 0 16 16">
@@ -923,7 +1052,7 @@
             <button type="button" data-language="fil" role="menuitem">Filipino</button>
           </div>
           <a href="account.html" data-i18n="signupLogin">SIGNUP | LOGIN</a>
-          <button class="buttonnav notification-button" id="notificationButton" type="button" aria-label="Notifications"
+          <button class="buttonnav notification-button" id="notificationButton" type="button" aria-label="Notifications" data-i18n-aria-label="notifications"
             aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell"
               viewBox="0 0 16 16">
@@ -941,7 +1070,7 @@
       <div class="bottom_mainnav">
         <div class="left_mainnav">
           <a href="#home">
-            <img src="logo/PCBuilder_logo_square.svg" alt="PCBuilder_logo_square"
+            <img src="logo/NEW_PCBuilder_Logo_WHITE-TEXT.png" alt="PCBuilder_logo_square"
               style="width: 50px; filter: drop-shadow(0px 0px 10px white);">
           </a>
         </div>
@@ -955,14 +1084,14 @@
                   d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2z" />
               </svg>
             </div>
-            <p class="search_p">Search:</p>
+            <p class="search_p" data-i18n="searchLabel">Search:</p>
             <div class="divider"></div>
 
             <input class="search-input" id="navbarSearchInput" type="search" placeholder="Enter your search here"
-              aria-label="Search products" data-i18n-placeholder="searchProducts">
+              aria-label="Search products" data-i18n-placeholder="searchProducts" data-i18n-aria-label="searchProducts">
 
           </div>
-          <a href="cart.html" class="buttonnav store-cart-home" aria-label="Shopping cart">
+          <a href="cart.html" class="buttonnav store-cart-home" aria-label="Shopping cart" data-i18n-aria-label="shoppingCart">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart"
               viewBox="0 0 16 16">
               <path
@@ -980,18 +1109,18 @@
   </div>
   <div class="about-page">
     <section class="about-hero">
-      <p class="about-eyebrow about-title-eyebrow">ABOUT PCBUILDERS</p>
+      <p class="about-eyebrow about-title-eyebrow" data-i18n="aboutEyebrow">ABOUT PCBUILDERS</p>
 
       <h1 class="about-title">
-        <span class="title-solid">BUILD YOUR</span>
-        <span class="title-outline">DREAMS</span>
+        <span class="title-solid" data-i18n="aboutTitleSolid">BUILD YOUR</span>
+        <span class="title-outline" data-i18n="aboutTitleOutline">DREAMS</span>
       </h1>
 
       <div class="about-hero-body">
         <div class="about-intro">
           <p class="about-eyebrow" data-i18n="whoWeAre">WHO WE ARE</p>
 
-          <p class="about-lead">
+          <p class="about-lead" data-i18n="aboutIntro">
             PCBuilders is your go-to destination for exploring PC parts and finding
             the right components for your setup. Whether you are planning your first
             PC or upgrading an existing build, we aim to make the process easier to
@@ -999,20 +1128,20 @@
           </p>
 
           <div class="about-cta">
-            <a href="discover.html">Explore PC Parts</a>
-            <a href="index.html#contact">Contact Us</a>
+            <a href="discover.html" data-i18n="explorePcParts">Explore PC Parts</a>
+            <a href="index.html#contact" data-i18n="contact">Contact Us</a>
           </div>
         </div>
 
         <img class="about-hero-image" src="images/full_pc_setup.png"
-          alt="A collection of custom PC builds and gaming setups">
+          alt="A collection of custom PC builds and gaming setups" data-i18n-alt="aboutHeroImageAlt">
       </div>
     </section>
 
-    <section class="about-content" aria-label="About PCBuilders">
+    <section class="about-content" aria-label="About PCBuilders" data-i18n-aria-label="aboutPageLabel">
       <article class="about-card">
-        <h2>What We Do</h2>
-        <p>
+        <h2 data-i18n="whatWeDoHeading">What We Do</h2>
+        <p data-i18n="whatWeDoBody">
           We bring PC-related products together in one catalog so customers can
           compare options and learn more about the components they are interested
           in. Our goal is to make finding parts easier to follow.
@@ -1020,8 +1149,8 @@
       </article>
 
       <article class="about-card">
-        <h2>Our Approach</h2>
-        <p>
+        <h2 data-i18n="ourApproachHeading">Our Approach</h2>
+        <p data-i18n="ourApproachBody">
           A good PC starts with choosing components that suit your needs. We focus
           on clear product information, organized categories, and a shopping
           experience that works across desktop, tablet, and mobile screens.
@@ -1030,8 +1159,8 @@
     </section>
 
     <section class="about-values">
-      <h2>Quality, Clarity, and Customer Support</h2>
-      <p>
+      <h2 data-i18n="qualityClarityHeading">Quality, Clarity, and Customer Support</h2>
+      <p data-i18n="qualityClarityBody">
         We believe customers should be able to browse products with confidence.
         PCBuilders is designed around accessible information, a straightforward
         catalog, and support when questions come up. As the project grows, these
@@ -1043,23 +1172,23 @@
     <section class="why-choose-section" id="why-choose-us">
 
       <h2 class="why-heading">
-        <span class="why-solid">WHY</span>
-        <span class="why-outline">CHOOSE</span>
-        <span class="why-solid">US?</span>
+        <span class="why-solid" data-i18n="whyWord">WHY</span>
+        <span class="why-outline" data-i18n="chooseWord">CHOOSE</span>
+        <span class="why-solid" data-i18n="usQuestion">US?</span>
       </h2>
 
       <p class="why-intro">
-        At <strong>PCBUILDER</strong>, we make it easy to find and build the
+        <span data-i18n="whyIntroStart">At </span><strong>PCBUILDER</strong><span data-i18n="whyIntroEnd">, we make it easy to find and build the
         right PC for your needs and budget. We focus on quality components,
         reliable performance, and personalized builds so every customer gets
-        a setup they can be proud of.
+        a setup they can be proud of.</span>
       </p>
 
       <div class="why-cards">
 
         <!-- Card 1: Quality Components -->
         <article class="why-card">
-          <h3>Quality Components</h3>
+          <h3 data-i18n="qualityComponents">Quality Components</h3>
 
           <div class="why-icon">
             <svg viewBox="0 0 100 100" aria-hidden="true">
@@ -1067,7 +1196,7 @@
             </svg>
           </div>
 
-          <p>
+          <p data-i18n="qualityComponentsBody">
             We choose reliable, high-performance parts designed to deliver
             great results.
           </p>
@@ -1075,26 +1204,26 @@
 
         <!-- Card 2: Built for Your Needs -->
         <article class="why-card">
-          <h3>Built for Your Needs</h3>
+          <h3 data-i18n="builtForNeeds">Built for Your Needs</h3>
 
           <div class="why-icon">
             <img src="svg/speed_meter.svg" alt="speed_meter" style="width: 80px;">
           </div>
 
-          <p>
+          <p data-i18n="builtForNeedsBody">
             Get the performance you need without spending more than necessary.
           </p>
         </article>
 
         <!-- Card 3: Budget-Friendly Options -->
         <article class="why-card">
-          <h3>Budget-Friendly Options</h3>
+          <h3 data-i18n="budgetFriendlyOptions">Budget-Friendly Options</h3>
 
           <div class="why-icon">
             <img src="svg/hammer_n_wrench.svg" alt="hammer_n_wrench" style="width: 80px;">
           </div>
 
-          <p>
+          <p data-i18n="budgetFriendlyOptionsBody">
             Choose the parts and specifications that match your style,
             performance goals, and budget.
           </p>
@@ -1102,7 +1231,7 @@
 
         <!-- Card 4: Customer-Focused -->
         <article class="why-card">
-          <h3>Customer-Focused</h3>
+          <h3 data-i18n="customerFocused">Customer-Focused</h3>
 
           <div class="why-icon">
             <svg viewBox="0 0 100 100" aria-hidden="true">
@@ -1110,7 +1239,7 @@
             </svg>
           </div>
 
-          <p>
+          <p data-i18n="customerFocusedBody">
             We're here to make PC building simple, straightforward, and
             stress-free.
           </p>
@@ -1123,10 +1252,10 @@
     <section class="proventrusted" id="proven-trusted">
 
       <div class="proventrusted-content">
-        <p class="big_proventrusted">PROVEN AND</p>
-        <p class="big_proventrusted_Outlined">TRUSTED</p>
+        <p class="big_proventrusted" data-i18n="provenHeading">PROVEN AND</p>
+        <p class="big_proventrusted_Outlined" data-i18n="trustedHeading">TRUSTED</p>
 
-        <p class="proventrusted-copy">
+        <p class="proventrusted-copy" data-i18n="provenDescription">
           We build trust through quality, transparency, and reliable service.
           Every PC build is carefully selected with compatible, genuine
           components, helping customers get dependable performance and peace
@@ -1138,8 +1267,8 @@
           <span class="trust-stat-icon">♟</span>
           <div>
             <strong>1,000+</strong>
-            <span>Monthly Users</span>
-            <small>People discovering PCBUILDER every month.</small>
+            <span data-i18n="monthlyUsers">Monthly Users</span>
+            <small data-i18n="monthlyUsersDescription">People discovering PCBUILDER every month.</small>
           </div>
         </div>
       </div>
@@ -1147,7 +1276,7 @@
       <div class="ratings-columns">
 
         <!-- First column: scrolls upward -->
-        <div class="infinite_scrolling_ratings" aria-label="Customer reviews">
+        <div class="infinite_scrolling_ratings" aria-label="Customer reviews" data-i18n-aria-label="customerReviews">
           <div class="ratings_track">
             <div class="ratings_group">
 
@@ -1217,7 +1346,7 @@
         </div>
 
         <!-- Second column: scrolls downward -->
-        <div class="infinite_scrolling_ratings scroll-reverse" aria-label="More customer reviews">
+        <div class="infinite_scrolling_ratings scroll-reverse" aria-label="More customer reviews" data-i18n-aria-label="moreCustomerReviews">
           <div class="ratings_track">
             <div class="ratings_group">
 
@@ -1288,33 +1417,143 @@
 
       </div>
     </section>
+
+    <section class="team-section" aria-labelledby="team-heading">
+      <h2 class="team-heading" id="team-heading" data-i18n="teamHeading">Meet the Team</h2>
+
+      <p class="team-subheading" data-i18n="teamSubheading">
+        PCBuilders was developed through teamwork, combining programming,
+        design, product management, and testing to create an organized and
+        accessible PC parts shopping experience.
+      </p>
+
+      <div class="team-list">
+
+        <!-- Team Member 1 -->
+        <article class="team-member">
+          <div class="team-member-copy">
+            <span class="team-number" data-i18n="teamMember01">Team Member 01</span>
+            <h3>Zantua, Dan Lynnl Carl</h3>
+            <p class="team-role" data-i18n="teamRole01">Lead Developer &amp; Programmer</p>
+            <p class="team-description" data-i18n="teamDescription01">
+              Dan leads the technical development of PCBuilders. He built
+              the website's HTML structure, implemented its JavaScript
+              functionality, worked on the database, and developed the
+              core logic that allows the website's features to operate.
+              His work brings the team's ideas together into a functional
+              online platform.
+            </p>
+          </div>
+
+          <img class="team-member-photo" src="images/team/dan-zantua.jpg" alt="Portrait of Dan Lynnl Carl Zantua" data-i18n-alt="teamPhotoAlt01"
+            loading="lazy">
+        </article>
+
+        <!-- Team Member 2 -->
+        <article class="team-member">
+          <div class="team-member-copy">
+            <span class="team-number" data-i18n="teamMember02">Team Member 02</span>
+            <h3>Lising, Lilian Mae</h3>
+            <p class="team-role" data-i18n="teamRole02">UI/UX Designer</p>
+            <p class="team-description" data-i18n="teamDescription02">
+              Lilian proposed the website's visual design and helped
+              establish its overall presentation. She contributed ideas
+              for the interface, layout, and visual consistency, helping
+              make PCBuilders more attractive, organized, and easier for
+              visitors to navigate.
+            </p>
+          </div>
+
+          <img class="team-member-photo" src="images/team/lilian-lising.jpg" alt="Portrait of Lilian Mae Lising" data-i18n-alt="teamPhotoAlt02"
+            loading="lazy">
+        </article>
+
+        <!-- Team Member 3 -->
+        <article class="team-member">
+          <div class="team-member-copy">
+            <span class="team-number" data-i18n="teamMember03">Team Member 03</span>
+            <h3>Macabata, Jerome</h3>
+            <p class="team-role" data-i18n="teamRole03">Website Manager &amp; Developer</p>
+            <p class="team-description" data-i18n="teamDescription03">
+              Jerome helps manage the website's content and maintain its
+              product catalog by adding and organizing shop items. He also
+              contributed to programming alongside Dan Zantua, supporting
+              the development and improvement of the website's features.
+            </p>
+          </div>
+
+          <img class="team-member-photo" src="images/team/jerome-macabata.jpg" alt="Portrait of Jerome Macabata" data-i18n-alt="teamPhotoAlt03"
+            loading="lazy">
+        </article>
+
+        <!-- Team Member 4 -->
+        <article class="team-member">
+          <div class="team-member-copy">
+            <span class="team-number" data-i18n="teamMember04">Team Member 04</span>
+            <h3>Mazo, Randy Miguel M.</h3>
+            <p class="team-role" data-i18n="teamRole04">Website &amp; Product Manager</p>
+            <p class="team-description" data-i18n="teamDescription04">
+              Randy helps manage the website's shop and keeps the product
+              catalog updated by adding items and organizing product
+              information. His contributions help maintain a useful,
+              organized catalog so visitors can browse the available
+              PC components more easily.
+            </p>
+          </div>
+
+          <img class="team-member-photo" src="images/team/randy-mazo.jpg" alt="Portrait of Randy Miguel M. Mazo" data-i18n-alt="teamPhotoAlt04"
+            loading="lazy">
+        </article>
+
+        <!-- Team Member 5 -->
+        <article class="team-member">
+          <div class="team-member-copy">
+            <span class="team-number" data-i18n="teamMember05">Team Member 05</span>
+            <h3>Sazon, John Mark</h3>
+            <p class="team-role" data-i18n="teamRole05">Quality Assurance Tester</p>
+            <p class="team-description" data-i18n="teamDescription05">
+              John Mark tests the website to identify bugs, check its
+              features, and evaluate its compatibility with different
+              devices and screen sizes. His testing helps the team detect
+              issues, improve reliability, and provide a smoother browsing
+              experience on desktop, tablet, and mobile.
+            </p>
+          </div>
+
+          <img class="team-member-photo" src="images/team/john-mark-sazon.jpg" alt="Portrait of John Mark Sazon" data-i18n-alt="teamPhotoAlt05"
+            loading="lazy">
+        </article>
+
+      </div>
+    </section>
   </div>
 
   <!-- FOOTER -->
   <footer class="site-footer" id="contact">
     <div class="footer-inner">
       <div class="footer-brand">
-        <a class="footer-logo" href="index.html#home">LOGO</a>
-        <span>PCBuilders - Build Your Dreams.</span>
+        <a class="footer-logo" href="index.html#home">
+          <img src="logo/NEW_PCBuilder_Logo_WHITE-TEXT.png" alt="NEW_PCBuilder_Logo_WHITE-TEXT">
+        </a>
+        <span data-i18n="footerTagline">PCBuilders - Build Your Dreams.</span>
       </div>
 
       <div class="footer-columns">
         <section class="footer-column footer-quick-links">
-          <h2>Quick links</h2>
+          <h2 data-i18n="quickLinks">Quick links</h2>
           <ul>
-            <li><a href="index.html#home">Home</a></li>
-            <li><a href="about.html" aria-current="page">About Us</a></li>
-            <li><a href="index.html#contact">Contact Us</a></li>
-            <li><a href="discover.html">PC Parts</a></li>
-            <li><a href="index.html#pcbuilder">PC Builder</a></li>
+            <li><a href="index.html#home" data-i18n="home">Home</a></li>
+            <li><a href="about.html" aria-current="page" data-i18n="about">About Us</a></li>
+            <li><a href="about.html#contact" data-i18n="contact">Contact Us</a></li>
+            <li><a href="discover.html" data-i18n="pcParts">PC Parts</a></li>
           </ul>
         </section>
 
         <section class="footer-column footer-contact-details">
-          <h2>Contact Us</h2>
+          <h2 data-i18n="contactUsHeading">Contact Us</h2>
           <p>
             <span class="footer-contact-icon">●</span>
-            Quezon City, Philippines
+            <span data-i18n="locationLabel">Quezon City, Philippines</span>
           </p>
           <p>
             <span class="footer-contact-icon">✉</span>
@@ -1327,24 +1566,29 @@
         </section>
 
         <section class="footer-column">
-          <h2>Get in touch</h2>
+          <h2 data-i18n="getInTouch">Get in touch</h2>
 
           <form class="footer-contact-form" id="aboutContactForm">
-            <input type="email" name="email" placeholder="Your email address" aria-label="Your email address" required>
+            <input type="email" name="email" placeholder="Your email address" aria-label="Your email address" data-i18n-placeholder="yourEmail" data-i18n-aria-label="yourEmail" required>
 
-            <textarea name="message" rows="3" placeholder="Your message" aria-label="Your message" required></textarea>
+            <textarea name="message" rows="3" placeholder="Your message" aria-label="Your message" data-i18n-placeholder="yourMessage" data-i18n-aria-label="yourMessage" required></textarea>
 
-            <button type="submit">SUBMIT</button>
+            <button type="submit" data-i18n="submit">SUBMIT</button>
           </form>
         </section>
       </div>
 
       <div class="footer-bottom">
-        <p>© 2026 PCBuilders. All Rights Reserved.</p>
+        <p>© 2026 PCBuilders. <span data-i18n="allRightsReserved">All Rights Reserved.</span></p>
       </div>
     </div>
   </footer>
 
+  <script type="module" src="home-products.js"></script>
+  <script type="module" src="discover.js"></script>
+  <script type="module" src="cart-count.js"></script>
+  <script src="site-ui.js"></script>
+  <script src="script.js"></script>
   <script>
     // Redirect navbar searches to the Discover page.
     document.getElementById("navbarSearchForm")?.addEventListener("submit", function (event) {
